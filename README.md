@@ -4,25 +4,25 @@
 
 
 ## `Background and Overview`  
-  For non native speakers prepping for interview or speaking with someone in english is very difficult and some people will feel shy.
+  For non-native speakers, prepping for interviews or speaking with someone in English is difficult and some people will feel shy.
 
-  Enspire is a website which records(stores) user responses to some general interview questions and helps user to improve communication by  correcting users mistakes. Logged in users can check their peroformances by click each category
+  Enspire is a website which records and stores user responses to general interview questions and helps users improve communication by  correcting their mistakes. Logged in users can check their performance by clicking each category
 
 ## Functionality & MVP List
 1. __User Authentication__
-    - New user can sign up
-    - Returning users can Log in and Log out
-    - Demo Login available to experince the site
-    - User are not allowed to use certain features without logging in
+    - New users can sign up
+    - Returning users can log in and log out
+    - Demo login available
+    - Users are not allowed to use certain features without logging in
 2. __Submit Data__
     - Users can submit data to backend (transcripts or speech-to-text)
     - Link with Microsoft Azure
     - Store the analyzed data to the database
 3. __Response__
     - Can open task to input data
-    - Can see the corrected answers with grammer mistake highlighted
+    - Can see the corrected answers with grammar mistakes highlighted
 4. __Performance Graph__
-    - Can click on task and see the Performance till date
+    - Can click on task and see performance over time
 5. __Bonus: Live Input__
     - Live recordings and live data corrections
 
@@ -33,36 +33,36 @@
 
 ## `Things Accomplished Over the Weekend`  
 - We have each gone through the user-auth MERN stack tutorial
-- Safuh Completed user auth for Enspire
-- We researched the best  APIs for speech and grammer check and came up with good results.
+- Safuh completed user auth for Enspire
+- We researched the best  APIs for speech and grammar check and came up with good results.
 
 ### `Work Breakdown`
 
 ## January 2nd
-- Complete user auth --Safuh
-- Finish CSS for Signup/login -Erica
-- Backend communication to frontend and API calls to store the data. --Jaya
+- Safuh: Complete user auth 
+- Erica: Finish CSS for signup/login
+- Jaya: Backend communication to frontend and API calls to store the data
 
 ## January 3rd
 
-- complete speech recognition -- Jaya
-- backend and frontend and API calls to check grammar -- safuh
-- stylesheet for splash page -- Erica
+- Jaya: Complete speech recognition
+- Safuh: Backend, frontend and API calls to check grammar
+- Erica: Stylesheet for splash page
 
 ## January 4th
 
-- continue to work on grammar api --safuh
-- auth routes and protected routes for user and seed data--erica
-- show the difference between actual data and corrected data -- Jaya
+- Safuh: Continue to work on grammar API
+- Erica: Auth routes and protected routes for user and seed data
+- Jaya: Show the difference between actual data and corrected data
 
 ## January 7th
 
-- stylesheet for remaing pages --Jaya
-- performance caluclator backend --erica
-- performance caluclator frontend -- safuh
+- Jaya: Stylesheet for remaing pages 
+- Erica: Performance calculator backend 
+- Safuh: performance caluclator frontend
 
 ## January 8th
 
-- complete Production README.md
+- Complete Production README.md
 - Refine design/CSS
 - Finish testing and debugging -All team members
