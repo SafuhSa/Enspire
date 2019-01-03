@@ -1,0 +1,36 @@
+.navbar {
+  width: 100vw;
+  border-bottom: 1px solid #cccccc;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  color: #004d00;
+}
+
+.navbar-left {
+    margin: 15px;
+    font-size: 24px;
+    color: #004d00;
+    font-weight: bold;
+    font-family: 'Comfortaa';
+    
+}
+
+.navbar-right {
+  font-family: 'Montserrat';
+  display: flex;
+  margin: 8px;
+  vertical-align: middle;
+}
+
+.navbar-right div {
+    margin: 6px 8px;
+    border-radius: 8px;
+    background-color: #F4FFF6;
+    padding: 5px;
+    border: 2px solid #004d00;
+    /* height: 26px; */
+}

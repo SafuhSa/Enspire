@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import "./navbar.css";
 
 
 class NavBar extends React.Component {
@@ -26,22 +27,18 @@ class NavBar extends React.Component {
         </div>
       );
     } else {
-      return (
-        <div>
-          <Link to={'/signup'}>Signup</Link>
-          <Link to={'/login'}>Login</Link>
-        </div>
-      );
+      return <div className="navbar-right">
+          <div><Link to={"/signup"}>Signup</Link></div>
+          <div><Link to={"/login"}>Login</Link></div>
+        </div>;
     }
   }
 
   render() {
-    return (
-      <div>
-        <h1>Enspire</h1>
-        {this.getLinks()}
-      </div>
-    );
+    return <div className="navbar">
+      <span className='navbar-left'><h1>Enspire</h1></span>
+      {this.getLinks()}
+      </div>;
   }
 }
 
