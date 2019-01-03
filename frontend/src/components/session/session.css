@@ -1,7 +1,33 @@
 .login-form-container {
-    background-color: pink
+    background-color: pink;
+    font-family: 'Montserrat';
 }
 
-.test {
-    background-color: green;
+.login-form-box {
+  background-color: white;
+  width: 34%;
+  min-width: 330px;
+  padding-left: 7%;
+  padding-right: 7%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  height: 400px;
+
+  border-radius: 10px;
+  border: 2px solid #004d00;
+  position: absolute;
+  top: 12%;
+  left: 33%;
+
+}
+
+.login-text-box {
+  height: 35px;
+  width: 100%;
+  font-size: 1.2em;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  margin: 8px;
 }

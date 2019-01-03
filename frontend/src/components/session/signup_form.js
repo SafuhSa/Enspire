@@ -56,41 +56,42 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    return (
-      <div className="login-form-container">
-        <form onSubmit={this.handleSubmit}>
+    return <div className="login-form-container">
+        <form className="login-form-box" onSubmit={this.handleSubmit}>
           <div className="login-form">
             <br />
-            <input type="text"
-              value={this.state.email}
-              onChange={this.update('email')}
-              placeholder="Email"
-            />
+            <input 
+              className="login-text-box"
+              type="text" 
+              value={this.state.email} 
+              onChange={this.update("email")} 
+              placeholder="Email" />
             <br />
-            <input type="text"
-              value={this.state.name}
-              onChange={this.update('name')}
-              placeholder="Full Name"
-            />
+            <input 
+              className="login-text-box"
+              type="text" 
+              value={this.state.name} 
+              onChange={this.update("name")} 
+              placeholder="Full Name" />
+            <br /><br />
+            <input 
+              className="login-text-box"
+              type="password" 
+              value={this.state.password} 
+              onChange={this.update("password")} 
+              placeholder="Password" />
             <br />
-            <input type="password"
-              value={this.state.password}
-              onChange={this.update('password')}
-              placeholder="Password"
-            />
-            <br />
-            <input type="password"
-              value={this.state.password2}
-              onChange={this.update('password2')}
-              placeholder="Confirm Password"
-            />
-            <br />
+            <input 
+              className="login-text-box"
+              type="password" 
+              value={this.state.password2} 
+              onChange={this.update("password2")} placeholder="Confirm Password" />
+            <br /><br />
             <input type="submit" value="Submit" />
             {this.renderErrors()}
           </div>
         </form>
-      </div>
-    );
+      </div>;
   }
 }
 
