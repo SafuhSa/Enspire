@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Speech from "./speech";
 
 const mapStateToProps = state => ({
-  currentUser: state.session.currentUser,
+  currentUser: state.session.user,
   errors: state.errors
 });
 

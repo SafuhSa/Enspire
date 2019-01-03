@@ -21,14 +21,17 @@ class Speech extends React.Component {
             window.SpeechRecognition || window.webkitSpeechRecognition;
 
         if (this.state.stream) {
+            debugger
             this.setState({ stream: false });
             this.recognition.stop();
             this.recognition.removeEventListener("end", this.recognition.start);
             this.recognition = null;
-                console.log(this.props.currentUser)
+                debugger
+                console.log("advxcawbsDv"+this.transcript)
             this.props.createSpeech({
-                user: 2,
-              text: this.transcript
+                user: this.props.currentUser.id,
+              text: "hvj"
+            //   this.transcript
             });
             this.transcript = "";
 
@@ -37,6 +40,7 @@ class Speech extends React.Component {
             //     child.parentNode.removeChild(child);
             // });
         } else {
+            debugger
             this.setState({ stream: true });
 
             this.recognition = new SpeechRecognition();
