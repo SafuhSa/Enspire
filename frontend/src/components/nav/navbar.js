@@ -35,10 +35,15 @@ class NavBar extends React.Component {
   }
 
   render() {
-    return <div className="navbar">
-      <span className='navbar-left'><h1>Enspire</h1></span>
-      {this.getLinks()}
-      </div>;
+    return (
+      <div className="navbar">
+        <span className="navbar-left">
+          <i className="fas fa-seedling"></i>
+          <h1>Enspire</h1>
+        </span>
+        {this.getLinks()}
+      </div>
+    )
   }
 }
 

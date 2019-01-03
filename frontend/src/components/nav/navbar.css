@@ -11,12 +11,16 @@
 }
 
 .navbar-left {
-    margin: 15px;
+    margin: 16px;
     font-size: 26px;
     color: #004d00;
     font-weight: bold;
     font-family: 'Comfortaa';
-    
+    display: flex;   
+}
+
+.navbar-left i {
+  margin: 0px 8px;
 }
 
 .navbar-right {
