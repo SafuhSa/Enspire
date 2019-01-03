@@ -6,30 +6,39 @@ class LoginForm extends React.Component {
     super(props);
 
     this.state = {
-      email: '',
-      password: '',
-      errors: {}
+      email: "",
+      password: "",
+      errors: {},
+      text: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.updatetext = this.updatetext.bind(this);
   }
 
   // Once the user has been authenticated, redirect to the Tweets page
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
-      this.props.history.push('/tweets');
+      this.props.history.push("/tweets");
     }
 
     // Set or clear errors
-    this.setState({ errors: nextProps.errors })
+    this.setState({ errors: nextProps.errors });
   }
 
   // Handle field updates (called in the render method)
   update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+    return e =>
+      this.setState({
+        [field]: e.currentTarget.value
+      });
+  }
+
+  updatetext(e) {
+    this.setState({
+      text: e.currentTarget.value
+    })
   }
 
   // Handle form submission
@@ -49,29 +58,29 @@ class LoginForm extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
+          <li key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
       </ul>
     );
   }
 
   render() {
-    let demo = {email: "email@email.com", password: 'password'}
+    let demo = { email: "email@email.com", password: "password" };
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <input type="text"
+            <input
+              type="text"
               value={this.state.email}
-              onChange={this.update('email')}
+              onChange={this.update("email")}
               placeholder="Email"
             />
             <br />
-            <input type="password"
+            <input
+              type="password"
               value={this.state.password}
-              onChange={this.update('password')}
+              onChange={this.update("password")}
               placeholder="Password"
             />
             <br />
@@ -79,7 +88,16 @@ class LoginForm extends React.Component {
             {this.renderErrors()}
           </div>
         </form>
-          <input type='submit' value='Demo Log in' onClick={() => this.props.login(demo)}  />
+        <input
+          type="submit"
+          value="Demo Log in"
+          onClick={() => this.props.login(demo)}
+        />
+        <form onSubmit={() => this.props.correct(this.state.text)}>
+          <textarea onChange={this.updatetext} />
+          <input type="submit" value="text" />
+        </form>
+        <h2>{this.props.correctText}</h2>
       </div>
     );
   }
