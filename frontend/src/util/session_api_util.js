@@ -15,12 +15,3 @@ export const signup = userData => {
 export const login = userData => {
   return axios.post("/api/users/login", userData);
 };
-
-// export const correctionTexts = text => (
-//   axios.get("https://api.textgears.com/check.php", {
-//     params: {
-//       key: "tZuTzrp9oTpUo2f6",
-//       text: text
-//     }
-//   })
-// )
