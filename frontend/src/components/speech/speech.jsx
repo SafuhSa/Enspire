@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 class Speech extends React.Component {
     constructor(props) {
         super(props);
@@ -21,12 +19,12 @@ class Speech extends React.Component {
             window.SpeechRecognition || window.webkitSpeechRecognition;
 
         if (this.state.stream) {
-            // debugger
+         
             this.setState({ stream: false });
             this.recognition.stop();
             this.recognition.removeEventListener("end", this.recognition.start);
             this.recognition = null;
-                debugger
+          
                 console.log("advxcawbsDv"+this.transcript)
             this.props.createSpeech({
                 user: this.props.currentUser.id,
@@ -39,7 +37,7 @@ class Speech extends React.Component {
                 child.parentNode.removeChild(child);
             });
         } else {
-            debugger
+         
             this.setState({ stream: true });
 
             this.recognition = new SpeechRecognition();
