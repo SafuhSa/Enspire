@@ -56,9 +56,12 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    return <div className="login-form-container">
-        <form className="login-form-box" onSubmit={this.handleSubmit}>
-          <h1  className='login-text'>Your first steps start now or something</h1>
+   
+    let demo = { email: "email@email.com", password: 'password' }
+    return (
+      <div className="login-form-container">
+          <form className="login-form-box" onSubmit={this.handleSubmit}>
+            <h1 className='login-text'>Your first steps start now or something</h1>
           <div className="login-form">
             <br />
             <input 
@@ -91,11 +94,18 @@ class SignupForm extends React.Component {
             <input 
               className='login-submit'
               type="submit" 
-              value="Submit" />
+              value="Sign up" />
             {this.renderErrors()}
           </div>
+          <input 
+            className='login-submit'
+            type='submit' 
+            value='Demo Log in' 
+            onClick={() => this.props.login(demo)} />
         </form>
-      </div>;
+
+      </div>
+    );
   }
 }
 

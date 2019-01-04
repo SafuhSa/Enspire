@@ -11,8 +11,8 @@ import './reset.css'
 const App = () => (
   <div>
     <NavBarContainer />
+    <AuthRoute path="/" component={MainPage} />
     <Switch>
-      <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </Switch>

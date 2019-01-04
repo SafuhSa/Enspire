@@ -1,0 +1,23 @@
+.main-page {
+  width: 100vw;
+  height: 100vh;
+  /* background-color: pink; */
+}
+
+.splash-bar {
+    margin-top: 50px;
+    width: 100vw;
+   
+    background-color: #005c00;
+    /* background: rgba(0, 77, 0, 0.8); */
+    box-shadow: 0 0 3px 3px #005c00;
+
+    
+    text-align: center;
+    padding: 100px;
+    font-weight: bold;
+    font-family: 'Comfortaa';
+    color: white;
+    font-size: 42px;
+   
+}

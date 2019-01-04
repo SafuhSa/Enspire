@@ -59,6 +59,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    let demo = {email: "email@email.com", password: 'password'}
     return (
       <div className='login-form-container'>
         <form className='login-form-box' onSubmit={this.handleSubmit}>
@@ -85,6 +86,11 @@ class LoginForm extends React.Component {
               value="Submit" />
             {this.renderErrors()}
           </div>
+          <input 
+            className='login-submit'
+            type='submit'  
+            value='Demo Log in' 
+            onClick={() => this.props.login(demo)}  />
         </form>
       </div>
     );
