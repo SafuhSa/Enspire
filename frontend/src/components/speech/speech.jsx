@@ -26,7 +26,7 @@ class Speech extends React.Component {
             this.recognition.stop();
             this.recognition.removeEventListener("end", this.recognition.start);
             this.recognition = null;
-                // debugger
+                debugger
                 console.log("advxcawbsDv"+this.transcript)
             this.props.createSpeech({
                 user: this.props.currentUser.id,
