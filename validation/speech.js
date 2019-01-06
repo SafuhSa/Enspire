@@ -7,9 +7,9 @@ module.exports = function validateSpeechInput(data) {
 
     data.text = validText(data.text) ? data.text : '';
 
-    if (!Validator.isLength(data.text, { min: 5, max: 1400 })) {
-        errors.text = 'Text must be between 5 and 1400 characters';
-    }
+    // if (!Validator.isLength(data.text, { min: 0, max: 1400 })) {
+    //     errors.text = 'Text must be between 5 and 1400 characters';
+    // }
 
     if (Validator.isEmpty(data.text)) {
         errors.text = 'Text field is required';

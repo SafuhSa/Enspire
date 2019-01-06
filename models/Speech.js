@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const SpeechSchema = new Schema({
-    User:{
+    user:{
         type:Schema.Types.ObjectId,
         ref:'users'
     },
     text:{
-        type:string,
+        type:String,
         req:true
     },
     date:{

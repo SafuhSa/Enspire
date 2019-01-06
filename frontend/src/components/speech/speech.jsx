@@ -30,12 +30,12 @@ class Speech extends React.Component {
                 user: this.props.currentUser.id,
               text: this.transcript
             });
-            this.transcript = "";
+            // this.transcript = "";
 
             let children = Array.from(document.querySelectorAll(".text > p"));
-            children.forEach(child => {
-                child.parentNode.removeChild(child);
-            });
+            // children.forEach(child => {
+            //     child.parentNode.removeChild(child);
+            // });
         } else {
          
             this.setState({ stream: true });
