@@ -36,6 +36,7 @@ const receiveAllText = texts => ({
 });
 
 export const fetchCorrections = () => dispatch =>
-  getCorrectText()
+  { 
+    return getCorrectText()
     .then(texts => dispatch(receiveAllText(texts)))
-    .catch(err => dispatch(receiveErrors(err.response.data)));
+    .catch(err => dispatch(receiveErrors(err.response.data)))};
