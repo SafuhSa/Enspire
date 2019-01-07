@@ -12,7 +12,7 @@ const TextSchema = new Schema({
   },
   correcttext: {
     type: Array,
-    required: true
+    required: false
   },
   date: {
     type: Date,
