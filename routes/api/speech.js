@@ -13,13 +13,11 @@ const validateSpeechInput = require("../../validation/speech");
 router.post("/", passport.authenticate('jwt', { session: false }), (req, res) => {
 
   const { errors, isValid } = validateSpeechInput(req.body);
-    // console.log(req)
     const newSpeech = new Speech({
       user: req.user._id,
       text: req.body.text
     });
  
-
   newSpeech.save().then(Speech => res.json(Speech.text));
   });
 

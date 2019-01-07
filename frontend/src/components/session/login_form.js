@@ -7,8 +7,8 @@ class LoginForm extends React.Component {
     super(props);
 
     this.state = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       errors: {}
     };
 
@@ -19,19 +19,21 @@ class LoginForm extends React.Component {
   // Once the user has been authenticated, redirect to the Tweets page
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
-      this.props.history.push('/tweets');
+      this.props.history.push("/grammar");
     }
 
     // Set or clear errors
-    this.setState({ errors: nextProps.errors })
+    this.setState({ errors: nextProps.errors });
   }
 
   // Handle field updates (called in the render method)
   update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+    return e =>
+      this.setState({
+        [field]: e.currentTarget.value
+      });
   }
+
 
   // Handle form submission
   handleSubmit(e) {
@@ -56,9 +58,7 @@ class LoginForm extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
+          <li key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
       </ul>
     );
@@ -75,14 +75,14 @@ class LoginForm extends React.Component {
             <input type="text"
               className="login-text-box"
               value={this.state.email}
-              onChange={this.update('email')}
+              onChange={this.update("email")}
               placeholder="Email"
             />
             <br />
             <input type="password"
               className="login-text-box"
               value={this.state.password}
-              onChange={this.update('password')}
+              onChange={this.update("password")}
               placeholder="Password"
             />
             <br /><br /><br/>

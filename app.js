@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 
 const users = require("./routes/api/users");
+const texts = require("./routes/api/texts");
 const speech=require("./routes/api/speech")
 
 
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 
 
 app.use("/api/users", users);
+app.use("/api/correctiontexts", texts);
 app.use("/api/speech", speech);
 
 

@@ -25,11 +25,10 @@ class NavBar extends React.Component {
   getLinks() {
     if (this.props.loggedIn) {
       return (
-        <div className='navbar-right'>
-          <div><Link to={'/tweets'}>All Tweets</Link></div>
-          <div><Link to={'/profile'}>Profile</Link></div>
-          <div><Link to={'/new_tweet'}>Write a Tweet</Link></div>
-          <button className='dark-green-button' onClick={this.logoutUser}>Logout</button>
+
+        <div>
+          <button onClick={this.logoutUser}>Logout</button>
+
         </div>
       );
     } else {
