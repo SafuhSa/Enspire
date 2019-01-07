@@ -4,7 +4,14 @@ import { withRouter } from "react-router-dom";
 class GrammarForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { text: "", prevs: "", idvView: '' };
+    this.state = { text: "", prevs: "", idvView: '', stream: false };
+
+
+    this.transcript = "";
+    this.handleSpeech = this.handleSpeech.bind(this);
+
+
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.updatetext = this.updatetext.bind(this);
@@ -13,13 +20,71 @@ class GrammarForm extends React.Component {
     this.renderIndividual = this.renderIndividual.bind(this);
   }
 
+  handleSpeech(e) {
+    e.preventDefault();
+    let SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (this.state.stream) {
+
+      this.setState({ stream: false });
+      this.recognition.stop();
+      this.recognition.removeEventListener("end", this.recognition.start);
+      this.recognition = null;
+      this.setState({text: this.transcript })
+      // console.log("advxcawbsDv" + this.transcript)
+      // this.props.createSpeech({
+      //   user: this.props.currentUser.id,
+      //   text: this.transcript
+      // });
+      // this.transcript = "";
+
+      let children = Array.from(document.querySelectorAll(".text > p"));
+      // children.forEach(child => {
+      //     child.parentNode.removeChild(child);
+      // });
+    } else {
+
+      this.setState({ stream: true });
+
+      this.recognition = new SpeechRecognition();
+      this.recognition.interimResults = true;
+
+      const texts = document.querySelector(".text");
+      // console.log(texts)
+      let p = document.createElement("p");
+      texts.appendChild(p);
+
+      this.recognition.addEventListener("result", e => {
+        // console.log(e)
+        const transcript = Array.from(e.results)
+          .map(result => result[0])
+          .map(result => result.transcript)
+          .join("");
+
+        p.textContent = transcript;
+        if (e.results[0].isFinal) {
+          this.transcript += p.textContent + ". ";
+          this.setState({ text: this.transcript })
+          p = document.createElement("p");
+          texts.appendChild(p);
+        }
+      });
+
+      this.recognition.start();
+      this.recognition.addEventListener("end", this.recognition.start);
+    }
+  }
+
+
   componentWillMount() {
     this.props.fetchCorrections();
   }
 
   componentWillReceiveProps(nextProps) {
-
-    this.setState({ prevs: Object.values(nextProps.allCorrections) });
+    if (nextProps.allCorrections) {
+      this.setState({ prevs: Object.values(nextProps.allCorrections) });
+    }
   }
 
   updatetext(e) {
@@ -125,29 +190,45 @@ class GrammarForm extends React.Component {
   }
 
   render() {
-
     let numErros;
     if (this.props.lastCorrection) {
       numErros = this.props.lastCorrection.correcttext.length;
     }
 
+    let buttonText = this.state.stream ? "Stop" : "Record";
+  
 
     return (
       <div>
-        <h3>TEXT CORRECTION</h3>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderErrors()}
-          <div>
-            <textarea onChange={this.updatetext} />
-          </div>
-          <input type="submit" value="Check Grammar" />
-        </form>
+        
         <div>
-          <h3> Number of errors: {numErros} </h3>
-          {this.renderLastCorrect()}
+          <h1>Record Conversation</h1>
+          <div className="text">
+
+
+          </div>
+          <button onClick={this.handleSpeech}>
+            {buttonText}
+          </button>
         </div>
-        <div>History: {this.renderAllCorrections()}</div>
-        { this.renderIndividual()}
+
+
+        <div>
+          <h3>TEXT CORRECTION</h3>
+          <form onSubmit={this.handleSubmit}>
+            {this.renderErrors()}
+            <div>
+              <textarea value={this.state.text} onChange={this.updatetext} />
+            </div>
+            <input type="submit" value="Check Grammar" />
+          </form>
+          <div>
+            <h3> Number of errors: {numErros} </h3>
+            {this.renderLastCorrect()}
+          </div>
+          <div>History: {this.renderAllCorrections()}</div>
+          { this.renderIndividual()}
+        </div>
       </div>
     );
   }

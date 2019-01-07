@@ -7,7 +7,6 @@ const mapStateToProps = state => {
   // debugger
   return {
     errors: state.errors.text,
-    // correction: state.correction
     lastCorrection: state.correction.last,
     allCorrections: state.correction.All
   };
