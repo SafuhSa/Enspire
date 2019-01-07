@@ -17,7 +17,7 @@ import Speech from './speech/speech_container'
 const App = () => (
   <div>
     {/* <Performance /> */}
-    {/* <NavBarContainer /> */}
+    <NavBarContainer />
     <AuthRoute path="/" component={MainPage} />
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />

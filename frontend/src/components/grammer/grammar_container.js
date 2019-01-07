@@ -4,7 +4,7 @@ import GrammarForm from './grammar_form'
 
 
 const mapStateToProps = state => {
-  // debugger
+
   return {
     errors: state.errors.text,
     lastCorrection: state.correction.last,

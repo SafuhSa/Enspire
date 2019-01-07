@@ -3,7 +3,9 @@ import "./main_page.css";
 
 class MainPage extends React.Component {
   render() {
-    return <div className="main-page">
+    return 
+      <div className="main-page"
+          onClick >
         <div className="splash-bar">
           <h1>Speak with confidence.</h1>
         </div>

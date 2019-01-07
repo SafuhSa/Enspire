@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "../main/main_page.css"
+import "./grammar.css"
 
 class GrammarForm extends React.Component {
   constructor(props) {
@@ -201,7 +201,7 @@ class GrammarForm extends React.Component {
   
 
     return (
-      <div  >
+      <div className='grammar-page' >
         
         <div>
           <h1>Record Conversation</h1>
@@ -209,7 +209,9 @@ class GrammarForm extends React.Component {
 
 
           </div>
-          <button onClick={this.handleSpeech}>
+          <button 
+            className='record-button'
+            onClick={this.handleSpeech}>
             {buttonText}
           </button>
         </div>

@@ -1,0 +1,22 @@
+.grammar-page {
+    margin: 100px;
+}
+
+.record-button {
+  margin: 6px 8px;
+  border-radius: 8px;
+  padding: 5px 9px;
+
+  
+  /* background-color: #004d00;
+  font-weight: 600;
+  color: white; */
+  /* background-color: #F4FFF6; */
+    border: 2px solid #004d00; 
+}
+
+.record-button:hover {
+  background-color: #f2f2f2;
+  border: 3px solid #004d00;
+  cursor: pointer;
+}
