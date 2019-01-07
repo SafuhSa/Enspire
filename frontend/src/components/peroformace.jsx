@@ -23,7 +23,7 @@ const margin = { top: 20, right: 20, bottom: 30, left: 40 };
      console.log(`The bin ${element.text} with id ${id} was clicked`);
    }
    render() {
-       debugger
+    
      return <div ref="root">
          <div style={{ width: "50%" }}>
            <BarChart ylabel="Quantity" width={this.state.width} height={500} margin={margin} data={data} onBarClick={this.handleBarClick} />
