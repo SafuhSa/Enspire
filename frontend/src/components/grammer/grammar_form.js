@@ -197,6 +197,8 @@ class GrammarForm extends React.Component {
       numErros = this.props.lastCorrection.correcttext.length;
     }
 
+    debugger
+
     let buttonText = this.state.stream ? "Stop" : "Record";
   
 
