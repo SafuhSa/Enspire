@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import "./navbar.css";
 
 
 class NavBar extends React.Component {
@@ -14,34 +15,45 @@ class NavBar extends React.Component {
     this.props.logout();
   }
 
+  handleDemo(e) {
+    e.preventDefault();
+    let demo = { email: "email@email.com", password: 'password' }
+    this.props.login(demo)
+  }
+
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
     if (this.props.loggedIn) {
       return (
-        <div>
-          <Link to={'/tweets'}>All Tweets</Link>
-          <Link to={'/profile'}>Profile</Link>
-          <Link to={'/new_tweet'}>Write a Tweet</Link>
-          <button onClick={this.logoutUser}>Logout</button>
+        <div className='navbar-right'>
+          <div><Link to={'/tweets'}>All Tweets</Link></div>
+          <div><Link to={'/profile'}>Profile</Link></div>
+          <div><Link to={'/new_tweet'}>Write a Tweet</Link></div>
+          <button className='dark-green-button' onClick={this.logoutUser}>Logout</button>
         </div>
       );
     } else {
-      return (
-        <div>
-          <Link to={'/signup'}>Signup</Link>
-          <Link to={'/login'}>Login</Link>
-        </div>
-      );
+      return <div className="navbar-right">
+          <div><Link to={"/signup"}>Signup</Link></div>
+          <div><Link to={"/login"}>Login</Link></div>
+          <button 
+            className='dark-green-button'
+            onClick={this.handleDemo.bind(this)}>
+            Demo
+          </button>
+        </div>;
     }
   }
 
   render() {
-    return (
-      <div>
-        <h1>Enspire</h1>
+    return <div className="navbar">
+        <Link className='navbar-left' to={"/"}>
+          <i className="fas fa-seedling" />
+          <h1>Enspire</h1>
+        </Link>  
+        
         {this.getLinks()}
-      </div>
-    );
+      </div>;
   }
 }
 

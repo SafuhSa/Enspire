@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import "./session.css";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -44,6 +45,12 @@ class LoginForm extends React.Component {
     this.props.login(user);
   }
 
+  handleDemo(e) {
+    e.preventDefault();
+    let demo = { email: "email@email.com", password: 'password' }
+    this.props.login(demo)
+  }
+
   // Render the session errors if there are any
   renderErrors() {
     return (
@@ -57,29 +64,40 @@ class LoginForm extends React.Component {
     );
   }
 
+
   render() {
-    let demo = {email: "email@email.com", password: 'password'}
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className='login-form-container'>
+        <form className='login-form-box' onSubmit={this.handleSubmit}>
+          <h1 className='login-text'>Welcome back</h1>
+          <br/><br/>
           <div>
             <input type="text"
+              className="login-text-box"
               value={this.state.email}
               onChange={this.update('email')}
               placeholder="Email"
             />
             <br />
             <input type="password"
+              className="login-text-box"
               value={this.state.password}
               onChange={this.update('password')}
               placeholder="Password"
             />
-            <br />
-            <input type="submit" value="Log in" />
+            <br /><br /><br/>
+            <input 
+              className="login-submit"
+              type="submit" 
+              value="Submit" />
             {this.renderErrors()}
           </div>
+          <input 
+            className='login-submit'
+            type='submit'  
+            value='Demo Log in' 
+            onClick={this.handleDemo.bind(this)}  />
         </form>
-          <input type='submit' value='Demo Log in' onClick={() => this.props.login(demo)}  />
       </div>
     );
   }

@@ -1,0 +1,90 @@
+.main-page {
+  width: 100vw;
+  height: 100vh;
+  /* background-color: pink; */
+}
+
+.splash-bar {
+    margin-top: 50px;
+    width: 100vw;
+   
+    background-color: #005c00;
+    /* background: rgba(0, 77, 0, 0.8); */
+    box-shadow: 0 0 2px 2px #005c00;
+
+    
+    text-align: center;
+    padding: 100px;
+    font-weight: bold;
+    font-family: 'Comfortaa';
+    color: white;
+    font-size: 42px;
+   
+}
+
+.speech-bubble {
+    font-size: 110px;
+    color: #004d00;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: 30px;
+}
+
+.splash-description {
+    /* margin: 30px 30px 20px 200px; */
+    margin: 30px;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    color: #4C4E4C;
+}
+
+.splash-mid-cont{
+    width: 100vw;
+    align-content: center;
+}
+
+.splash-middle {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1000px;
+   margin: auto;
+}
+
+.splash-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 11vw;
+}
+
+.splash-bottom div {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    margin-top: 20px;
+    width: 24vw;
+    min-width: 150px;
+    border-radius: 10px;
+    /* border: 2px solid #004d00; */
+    /* border: 3px solid grey; */
+    min-height: 200px;
+    padding: 20px;
+}
+
+.splash-bottom div i {
+    font-size: 42px;
+    color: grey;
+    text-align: center;
+    
+   
+    width: 100%;
+    
+}
+
+.foot {
+    /* width: 100%;
+    margin: auto; */
+    padding: 20px;
+    font-size: 12px;
+    position: absolute;
+    left: 80%;
+}

@@ -1,0 +1,46 @@
+.login-form-container {
+    background-color: pink;
+    font-family: 'Montserrat';
+}
+
+.login-form-box {
+  background-color: #F4F6F6;
+  width: 34%;
+  min-width: 330px;
+  padding-left: 7%;
+  padding-right: 7%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  /* height: 400px; */
+
+  border-radius: 10px;
+  border: 2px solid #004d00;
+  position: absolute;
+  top: 12%;
+  left: 33%;
+
+}
+
+.login-text-box {
+  height: 35px;
+  width: 100%;
+  background-color: white;
+  font-size: 16px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  margin: 8px;
+}
+
+.login-submit{
+  background-color: #004d00;
+  width: 100%;
+  height: 38px;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  margin: 8px;
+}
