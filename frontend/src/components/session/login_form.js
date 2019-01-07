@@ -45,6 +45,12 @@ class LoginForm extends React.Component {
     this.props.login(user);
   }
 
+  handleDemo(e) {
+    e.preventDefault();
+    let demo = { email: "email@email.com", password: 'password' }
+    this.props.login(demo)
+  }
+
   // Render the session errors if there are any
   renderErrors() {
     return (
@@ -58,13 +64,13 @@ class LoginForm extends React.Component {
     );
   }
 
+
   render() {
-    let demo = {email: "email@email.com", password: 'password'}
     return (
       <div className='login-form-container'>
         <form className='login-form-box' onSubmit={this.handleSubmit}>
           <h1 className='login-text'>Welcome back</h1>
-          <br/>
+          <br/><br/>
           <div>
             <input type="text"
               className="login-text-box"
@@ -79,7 +85,7 @@ class LoginForm extends React.Component {
               onChange={this.update('password')}
               placeholder="Password"
             />
-            <br /><br />
+            <br /><br /><br/>
             <input 
               className="login-submit"
               type="submit" 
@@ -90,7 +96,7 @@ class LoginForm extends React.Component {
             className='login-submit'
             type='submit'  
             value='Demo Log in' 
-            onClick={() => this.props.login(demo)}  />
+            onClick={this.handleDemo.bind(this)}  />
         </form>
       </div>
     );
