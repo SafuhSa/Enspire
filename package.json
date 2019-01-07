@@ -29,6 +29,7 @@
     "mongoose": "^5.4.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "react-bar-chart": "^0.1.2",
     "validator": "^10.10.0"
   },
   "devDependencies": {
