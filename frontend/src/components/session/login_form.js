@@ -8,19 +8,17 @@ class LoginForm extends React.Component {
     this.state = {
       email: "",
       password: "",
-      errors: {},
-      text: ''
+      errors: {}
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
-    this.updatetext = this.updatetext.bind(this);
   }
 
   // Once the user has been authenticated, redirect to the Tweets page
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
-      this.props.history.push("/tweets");
+      this.props.history.push("/grammar");
     }
 
     // Set or clear errors
@@ -35,11 +33,6 @@ class LoginForm extends React.Component {
       });
   }
 
-  updatetext(e) {
-    this.setState({
-      text: e.currentTarget.value
-    })
-  }
 
   // Handle form submission
   handleSubmit(e) {
@@ -93,11 +86,6 @@ class LoginForm extends React.Component {
           value="Demo Log in"
           onClick={() => this.props.login(demo)}
         />
-        <form onSubmit={() => this.props.correct(this.state.text)}>
-          <textarea onChange={this.updatetext} />
-          <input type="submit" value="text" />
-        </form>
-        <h2>{this.props.correctText}</h2>
       </div>
     );
   }
