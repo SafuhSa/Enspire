@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import "../main/main_page.css"
 
 class GrammarForm extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class GrammarForm extends React.Component {
       this.recognition.stop();
       this.recognition.removeEventListener("end", this.recognition.start);
       this.recognition = null;
+
       this.setState({text: this.transcript })
       // console.log("advxcawbsDv" + this.transcript)
       // this.props.createSpeech({
@@ -199,7 +201,7 @@ class GrammarForm extends React.Component {
   
 
     return (
-      <div>
+      <div  >
         
         <div>
           <h1>Record Conversation</h1>

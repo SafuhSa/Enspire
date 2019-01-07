@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import "./session.css";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -55,41 +56,54 @@ class SignupForm extends React.Component {
   }
 
   render() {
+   
     let demo = { email: "email@email.com", password: 'password' }
     return (
       <div className="login-form-container">
-        <form onSubmit={this.handleSubmit}>
+          <form className="login-form-box" onSubmit={this.handleSubmit}>
+            <h1 className='login-text'>Your first steps start now or something</h1>
           <div className="login-form">
             <br />
-            <input type="text"
-              value={this.state.email}
-              onChange={this.update('email')}
-              placeholder="Email"
-            />
+            <input 
+              className="login-text-box"
+              type="text" 
+              value={this.state.email} 
+              onChange={this.update("email")} 
+              placeholder="Email" />
             <br />
-            <input type="text"
-              value={this.state.name}
-              onChange={this.update('name')}
-              placeholder="Full Name"
-            />
+            <input 
+              className="login-text-box"
+              type="text" 
+              value={this.state.name} 
+              onChange={this.update("name")} 
+              placeholder="Full Name" />
+            <br /><br />
+            <input 
+              className="login-text-box"
+              type="password" 
+              value={this.state.password} 
+              onChange={this.update("password")} 
+              placeholder="Password" />
             <br />
-            <input type="password"
-              value={this.state.password}
-              onChange={this.update('password')}
-              placeholder="Password"
-            />
-            <br />
-            <input type="password"
-              value={this.state.password2}
-              onChange={this.update('password2')}
-              placeholder="Confirm Password"
-            />
-            <br />
-            <input type="submit" value="Submit" />
+            <input 
+              className="login-text-box"
+              type="password" 
+              value={this.state.password2} 
+              onChange={this.update("password2")} placeholder="Confirm Password" />
+            <br /><br />
+            <input 
+              className='login-submit'
+              type="submit" 
+              value="Sign up" />
             {this.renderErrors()}
           </div>
+          <input 
+            className='login-submit'
+            type='submit' 
+            value='Demo Log in' 
+            onClick={() => this.props.login(demo)} />
         </form>
-        <input type='submit' value='Demo Log in' onClick={() => this.props.login(demo)} />
+
       </div>
     );
   }
