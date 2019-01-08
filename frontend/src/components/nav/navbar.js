@@ -31,9 +31,9 @@ class NavBar extends React.Component {
             <Link to="/history">History</Link>
           </div>
 
-          <button className="dark-green-button" onClick={this.logoutUser}>
+          <div onClick={this.logoutUser}>
             Logout
-          </button>
+          </div>
         </div>;
 
     } else {

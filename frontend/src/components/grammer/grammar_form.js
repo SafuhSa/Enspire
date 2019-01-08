@@ -211,14 +211,14 @@ class GrammarForm extends React.Component {
         <div className="grammar-box">
           <div className="flex">
             <button className="change-button">Change Topic</button>
-            <h1 className="interview">Topic: Interview</h1>
+            <h1 className="interview">Interview</h1>
           </div>
 
           <div className="flex">
             <button className="change-button">New Prompt</button>
             <h2 className="interview">
               {" "}
-              Prompt: What is your greatest weakness?
+              What is your greatest weakness?
             </h2>
           </div>
 
@@ -248,11 +248,14 @@ class GrammarForm extends React.Component {
 
             <div className="flex-right">
               <button className="hidden" />
+              <div>
+              <button className='grammar-button' onClick={() => this.speak(this.state.text)}>Read Text</button>
               <input className="grammar-button" type="submit" value="Check Grammar" />
+              </div>
             </div>
           </form>
 
-          <button onClick={() => this.speak(this.state.text)}>Read</button>
+          
           <div>
             <h3> Number of errors: {numErros} </h3>
             {this.renderLastCorrect()}
