@@ -94,7 +94,7 @@ class HistoryPage extends React.Component {
             );
         }
         // this.setState({idvView: ''})
-        this.state.idvView="";
+        this.state.idvView = '';
         return result;
     }
 
@@ -108,8 +108,8 @@ class HistoryPage extends React.Component {
             const date = new Date(errs.date);
             const name = errs.name
             result.push(
-                <div key={i}>
-                {name}
+                <div className='history-list' key={i}>
+                    {name}
                     <button onClick={() => this.setState({ idvView: errs })}>
                         {date.toLocaleString()}
                     </button>
@@ -124,14 +124,16 @@ class HistoryPage extends React.Component {
     render() {
        
     
-        return <div className='history-page'>
-            ------------++++++++++++++------
-            History: {this.renderAllCorrections()}
-            {this.populateData()}
-            {this.renderIndividual()}
-            
-
-        </div >
+        return <div className="history-page">
+            <div className="history-flex">
+                <div className='history-list'>
+                    <h1 className="history-title">Previous Sessions: </h1>
+                    {this.renderAllCorrections()}
+                </div>
+                {this.populateData()}
+              {this.renderIndividual()}
+            </div>
+          </div>;
     }
 }
 
