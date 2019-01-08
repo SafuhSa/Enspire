@@ -1,22 +1,38 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./grammar.css"
+import conversation from './conversation';
+import interview from './interview';
 
 class GrammarForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { text: "", name: "", prevs: "", idvView: "", stream: false };
+    this.state = {
+      text: "",
+      prevs: "",
+      idvView: "",
+      stream: false,
+      prompt: "",
+      name: ''
+    };
+
+    this.topic = 'Conversation'
+    this.prompt = conversation;
 
     this.transcript = "";
     this.handleSpeech = this.handleSpeech.bind(this);
+
+    this.speaker = new SpeechSynthesisUtterance();
+    this.speaker.lang = "en-US";
+    this.speaker.text = "Welcome To Enspire";
+    speechSynthesis.speak(this.speaker);
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.updatetext = this.updatetext.bind(this);
     this.updateName = this.updateName.bind(this)
     this.renderLastCorrect = this.renderLastCorrect.bind(this);
-    this.renderAllCorrections = this.renderAllCorrections.bind(this);
-    this.renderIndividual = this.renderIndividual.bind(this);
+    this.handlePormpt = this.handlePormpt.bind(this);
   }
 
   handleSpeech(e) {
@@ -31,17 +47,6 @@ class GrammarForm extends React.Component {
       this.recognition = null;
 
       this.setState({ text: this.transcript });
-      // console.log("advxcawbsDv" + this.transcript)
-      // this.props.createSpeech({
-      //   user: this.props.currentUser.id,
-      //   text: this.transcript
-      // });
-      // this.transcript = "";
-
-      // let children = Array.from(document.querySelectorAll(".text > p"));
-      // children.forEach(child => {
-      //     child.parentNode.removeChild(child);
-      // });
     } else {
       this.setState({ stream: true });
 
@@ -54,7 +59,6 @@ class GrammarForm extends React.Component {
       texts.appendChild(p);
 
       this.recognition.addEventListener("result", e => {
-
         const transcript = Array.from(e.results)
           .map(result => result[0])
           .map(result => result.transcript)
@@ -74,10 +78,7 @@ class GrammarForm extends React.Component {
     }
   }
 
-  // componentWillMount() {
-  //   this.props.fetchCorrections();
-  // }
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchCorrections();
   }
 
@@ -100,10 +101,9 @@ class GrammarForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
-      let obj = {text:this.state.text,name:this.state.name}
+
+      let obj = {text:this.state.text, name:this.state.name}
     this.props.correct(obj);
-    // this.props.correct(this.state.name);
   }
 
   renderLastCorrect() {
@@ -132,59 +132,30 @@ class GrammarForm extends React.Component {
     return result;
   }
 
-  renderIndividual() {
-    if (!this.state.idvView) return null;
-
-    let result = [];
-
-    result.push(<div key={"text"}>{this.state.idvView.wrongtext}</div>);
-    for (let i = 0; i < this.state.idvView.correcttext.length; i++) {
-      const errs = this.state.idvView.correcttext[i];
-      const bad = errs.bad;
-      const type = errs.type;
-      const better = errs.better.slice(0, 2).join(" , ");
-
-      result.push(
-        <div key={i}>
-          <ul>
-            <li>Err N# {i + 1}</li>
-            <li>bad: {bad} </li>
-            <li>better: {better} </li>
-            <li>type: {type} </li>
-          </ul>
-          --------------
-        </div>
-      );
-    }
-    this.state.idvView = "";
-    return result;
-  }
-
-  renderAllCorrections() {
-    let result = [];
-
-    for (let i = 0; i < this.state.prevs.length; i++) {
-      const errs = this.state.prevs[i];
-      const date = new Date(errs.date);
-
-      result.push(
-        <div key={i}>
-          <button onClick={() => this.setState({ idvView: errs })}>
-            {date.toLocaleString()}
-          </button>
-        </div>
-      );
-    }
-
-    return result;
-  }
-
-
   speak(text) {
-    this.speaker.text = text
+    this.speaker.text = text;
     speechSynthesis.speak(this.speaker);
   }
 
+  handlePormpt() {
+    let idx = (this.prompt.indexOf(this.state.prompt) + 1) % this.prompt.length;
+    let text = this.prompt[idx];
+    this.setState({ prompt: text });
+    this.speak(text);
+  }
+
+  changeTopic() {
+    if (this.prompt[2] === interview[2]) {
+      this.prompt = conversation
+      this.topic = "Conversation"
+      this.speak("Topic changed to Conversation");
+    } else {
+      this.prompt = interview
+      this.topic = "Interview";
+      this.speak("Topic changed to Interview");
+    }
+    this.setState({prompt: ''})
+  }
 
   renderErrors() {
     return (
@@ -202,23 +173,28 @@ class GrammarForm extends React.Component {
       numErros = this.props.lastCorrection.correcttext.length;
     }
 
-
     let buttonText = this.state.stream ? "Stop" : "Record";
 
-    return <div className="grammar-page">
+    return (
+      <div className="grammar-page">
         <br />
         <br />
         <div className="grammar-box">
           <div className="flex">
-            <button className="change-button">Change Topic</button>
-            <h1 className="interview">Interview</h1>
+
+            <button className="change-button" onClick={this.changeTopic.bind(this)} >Change Topic</button>
+            <h1 className="interview">{this.topic}</h1>
+
           </div>
 
           <div className="flex">
-            <button className="change-button">New Prompt</button>
+            <button className="change-button" onClick={this.handlePormpt.bind(this)} >New Prompt</button>
+                {/* {this.speak(this.state.prompt)} */}
+
             <h2 className="interview">
-              {" "}
-              What is your greatest weakness?
+
+                {this.state.prompt}
+
             </h2>
           </div>
 
@@ -255,13 +231,13 @@ class GrammarForm extends React.Component {
             </div>
           </form>
 
-          
           <div>
             <h3> Number of errors: {numErros} </h3>
             {this.renderLastCorrect()}
           </div>
         </div>
-      </div>;  
+      </div>
+    );
   }
 }
 
