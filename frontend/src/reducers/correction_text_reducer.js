@@ -1,4 +1,5 @@
 import { RECEIVE_TEXT, RECEIVE_TEXT_ERRORS, RECEIVE_ALL_TEXT } from "../actions/correction_text_action";
+import { RECEIVE_USER_LOGOUT} from "../actions/session_actions"
 import merge from "lodash/merge";
 
 const _nullErrors = [];
@@ -15,7 +16,8 @@ const CorrectionReducer = (state = {}, action) => {
 
     case RECEIVE_TEXT_ERRORS:
       return _nullErrors;
-
+    case RECEIVE_USER_LOGOUT:
+    return {corrections:{}}
     default:
       return state;
   }
