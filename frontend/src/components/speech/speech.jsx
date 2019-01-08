@@ -32,7 +32,7 @@ class Speech extends React.Component {
             });
             // this.transcript = "";
 
-            let children = Array.from(document.querySelectorAll(".text > p"));
+            // let children = Array.from(document.querySelectorAll(".text > p"));
             // children.forEach(child => {
             //     child.parentNode.removeChild(child);
             // });
