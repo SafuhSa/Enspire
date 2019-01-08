@@ -12,7 +12,8 @@ class GrammarForm extends React.Component {
       prevs: "",
       idvView: "",
       stream: false,
-      prompt: ""
+      prompt: "",
+      name: ''
     };
 
     this.topic = 'Conversation'
@@ -29,6 +30,7 @@ class GrammarForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.updatetext = this.updatetext.bind(this);
+    this.updateName = this.updateName.bind(this)
     this.renderLastCorrect = this.renderLastCorrect.bind(this);
     this.handlePormpt = this.handlePormpt.bind(this);
   }
@@ -91,11 +93,17 @@ class GrammarForm extends React.Component {
       text: e.currentTarget.value
     });
   }
+  updateName(e) {
+    this.setState({
+      name: e.currentTarget.value
+    });
+  }
 
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.correct(this.state.text);
+      let obj = {text:this.state.text, name:this.state.name}
+    this.props.correct(obj);
   }
 
   renderLastCorrect() {
@@ -168,36 +176,51 @@ class GrammarForm extends React.Component {
 
     return (
       <div className="grammar-page">
-        <div>
-          <div className="floater">
-            <button className="record-button" onClick={this.changeTopic.bind(this)}>
-              Change Topic
-            </button>
-            <h1>{this.topic}</h1>
+        <br />
+        <br />
+        <div className="grammar-box">
+          <div className="flex">
+            <button className="change-button" onClick={this.changeTopic.bind(this)} >Change Topic</button>
+            <h1 className="interview">{this.topic}</h1>
           </div>
 
-          <div className="floater">
-            <button className="record-button" onClick={this.handlePormpt.bind(this)}>
-              New Prompt
-            </button>
-            {this.speak(this.state.prompt)}
-            <h2>{this.state.prompt}</h2>
+          <div className="flex">
+            <button className="change-button" onClick={this.handlePormpt.bind(this)} >New Prompt</button>
+                {this.speak(this.state.prompt)}
+
+            <h2 className="interview">
+                {this.state.prompt}
+            </h2>
           </div>
 
-          <div className="text" />
-          <button className="record-button" onClick={this.handleSpeech}>
-            {buttonText}
-          </button>
-        </div>
+          <div className="text hidden" />
+          <br />
 
-        <div>
-          <h3>TEXT CORRECTION</h3>
+          <div className="flex-right">
+            <div className='interview'>
+              Title:
+              <input 
+                className='title-input'
+                placeholder='Enter Title of Recording'
+                type="text" 
+                onChange={this.updateName} 
+                value={this.state.name} />
+            </div>
+            <button className="record-button" onClick={this.handleSpeech}>
+              {buttonText}
+            </button>
+          </div>
+
           <form onSubmit={this.handleSubmit}>
             {this.renderErrors()}
             <div>
-              <textarea value={this.state.text} onChange={this.updatetext} />
+              <textarea className="text-input" value={this.state.text} onChange={this.updatetext} />
             </div>
-            <input type="submit" value="Check Grammar" />
+
+            <div className="flex-right">
+              <button className="hidden" />
+              <input className="grammar-button" type="submit" value="Check Grammar" />
+            </div>
           </form>
           <button onClick={() => this.speak(this.state.text)}>Read</button>
           <div>

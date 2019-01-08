@@ -10,8 +10,12 @@ router.post("/", passport.authenticate('jwt', { session: false }), async (req, r
   let apiResponse;
   let errors = {};
 
-  if (!req.body.text){
+  if (!req.body.text.text){
     errors.text = "Text field is empty";
+    return res.status(400).json(errors);
+  }
+  if (!req.body.text.name) {
+    errors.text = "name field is empty";
     return res.status(400).json(errors);
   }
 
@@ -33,7 +37,8 @@ router.post("/", passport.authenticate('jwt', { session: false }), async (req, r
   if (grammarErrors.length > 0) {
     newText = new Text({
       user: req.user.id,
-      wrongtext: req.body.text,
+      name:req.body.text.name,
+      wrongtext: req.body.text.text,
       correcttext: grammarErrors
     });
    return newText.save().then(text => res.json(text))
