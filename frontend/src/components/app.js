@@ -12,7 +12,6 @@ import HistoryContainer from './history/history_container'
 
 import './reset.css'
 
-import Speech from './speech/speech_container'
 
 
 const App = () => (
@@ -25,7 +24,6 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/history" component={HistoryContainer} />
       <ProtectedRoute exact path="/grammar" component={GrammarContainer} />
-      <Route exact path="/speech" component={Speech} />
     </Switch>
   </div>
 );
