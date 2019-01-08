@@ -46,7 +46,8 @@ class HistoryPage extends React.Component {
         </div>
             );
         }
-        this.setState({idvView: ''})
+        // this.setState({idvView: ''})
+        this.state.idvView = '';
         return result;
     }
 

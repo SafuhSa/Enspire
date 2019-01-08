@@ -21,53 +21,42 @@ class GrammarForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
     this.updatetext = this.updatetext.bind(this);
     this.renderLastCorrect = this.renderLastCorrect.bind(this);
-    this.renderAllCorrections = this.renderAllCorrections.bind(this);
-    this.renderIndividual = this.renderIndividual.bind(this);
+    this.handlePormpt = this.handlePormpt.bind(this);
   }
-
+  
   handleSpeech(e) {
     e.preventDefault();
     let SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+    
     if (this.state.stream) {
-
+      
       this.setState({ stream: false });
       this.recognition.stop();
       this.recognition.removeEventListener("end", this.recognition.start);
       this.recognition = null;
-
+      
       this.setState({text: this.transcript })
-      // console.log("advxcawbsDv" + this.transcript)
-      // this.props.createSpeech({
-      //   user: this.props.currentUser.id,
-      //   text: this.transcript
-      // });
-      // this.transcript = "";
-
-      // let children = Array.from(document.querySelectorAll(".text > p"));
-      // children.forEach(child => {
-      //     child.parentNode.removeChild(child);
-      // });
+      
     } else {
-
+      
       this.setState({ stream: true });
-
+      
       this.recognition = new SpeechRecognition();
       this.recognition.interimResults = true;
-
+      
       const texts = document.querySelector(".text");
-
+      
       let p = document.createElement("p");
       texts.appendChild(p);
-
+      
       this.recognition.addEventListener("result", e => {
-
+        
         const transcript = Array.from(e.results)
-          .map(result => result[0])
-          .map(result => result.transcript)
-          .join("");
-
+        .map(result => result[0])
+        .map(result => result.transcript)
+        .join("");
+        
         p.textContent = transcript;
         if (e.results[0].isFinal) {
           this.transcript += p.textContent + ". ";
@@ -76,35 +65,35 @@ class GrammarForm extends React.Component {
           texts.appendChild(p);
         }
       });
-
+      
       this.recognition.start();
       this.recognition.addEventListener("end", this.recognition.start);
     }
   }
-
-
+  
+  
   componentWillMount() {
     this.props.fetchCorrections();
   }
-
+  
   componentWillReceiveProps(nextProps) {
     if (nextProps.allCorrections) {
       this.setState({ prevs: Object.values(nextProps.allCorrections) });
     }
   }
-
+  
   updatetext(e) {
     this.setState({
       text: e.currentTarget.value
     });
   }
-
+  
   handleSubmit(e) {
     e.preventDefault();
-
+    
     this.props.correct(this.state.text);
   }
-
+  
   
   renderLastCorrect() {
     let responses = this.props.lastCorrection;
@@ -116,7 +105,7 @@ class GrammarForm extends React.Component {
       const bad = errs.bad;
       const type = errs.type;
       const better = errs.better.slice(0, 2).join(" , ");
-
+      
       result.push(
         <div key={i}>
          <ul>
@@ -131,86 +120,39 @@ class GrammarForm extends React.Component {
     }
     return result;
   }
-
-  renderIndividual() {
-    if (!this.state.idvView) return  null;
-
-    let result = [];
-    
-    result.push(
-      <div key={'text'}>
-        {this.state.idvView.wrongtext}
-      </div>
-    )
-    for (let i = 0; i < this.state.idvView.correcttext.length; i++) {
-      const errs = this.state.idvView.correcttext[i];
-      const bad = errs.bad;
-      const type = errs.type;
-      const better = errs.better.slice(0, 2).join(" , ");
-
-      result.push(
-        <div key={i}>
-        <ul>
-          <li>Err N# {i + 1}</li>
-          <li>bad: {bad} </li>
-          <li>better: {better} </li>
-          <li>type: {type} </li>
-        </ul>
-          --------------
-        </div>
-      );
-    }
-    // this.state.idvView = '';
-    // this.setState({idvView: ''})
-    return result;
-  }
-
-  renderAllCorrections() {
-    let result = [];
-
-    for (let i = 0; i < this.state.prevs.length; i++) {
-      const errs = this.state.prevs[i];
-      const date = new Date(errs.date);
-
-      result.push(
-        <div key={i}>
-          <button onClick={() => this.setState({ idvView: errs })}>
-            {date.toLocaleString()}
-          </button>
-        </div>
-      );
-    }
-
-    return result;
-  }
-
-
+  
+  
+  
   speak(text) {
     this.speaker.text = text
     speechSynthesis.speak(this.speaker);
   }
 
-
+  handlePormpt() {
+    let arr = File.readlines('./interview')
+      
+  }
+  
   renderErrors() {
     return (
       <ul>
         {Object.keys(this.props.errors).map((error, i) => (
           <li key={`error-${i}`}>{this.props.errors[error]}</li>
-        ))}
+          ))}
       </ul>
     );
   }
-
+  
   render() {
     let numErros;
     if (this.props.lastCorrection) {
       numErros = this.props.lastCorrection.correcttext.length;
     }
-
-
+    
+    
     let buttonText = this.state.stream ? "Stop" : "Record";
-  
-
+    
+    
     return <div className="grammar-page">
         <div>
           <div className="floater">
@@ -219,8 +161,8 @@ class GrammarForm extends React.Component {
           </div>
 
           <div className="floater">
-            <button className="record-button">New Prompt</button>
-            <h2> Prompt: What is your greatest weakness?</h2>
+            <button className="record-button" onClick={this.handlePormpt}>New Prompt</button>
+            <h2>{}</h2>
           </div>
 
           <div className="text" />
@@ -249,3 +191,58 @@ class GrammarForm extends React.Component {
 }
 
 export default withRouter(GrammarForm);
+
+// this.renderAllCorrections = this.renderAllCorrections.bind(this);
+// this.renderIndividual = this.renderIndividual.bind(this);
+
+// renderIndividual() {
+  //   if (!this.state.idvView) return  null;
+  
+  //   let result = [];
+  
+  //   result.push(
+    //     <div key={'text'}>
+    //       {this.state.idvView.wrongtext}
+  //     </div>
+  //   )
+  //   for (let i = 0; i < this.state.idvView.correcttext.length; i++) {
+  //     const errs = this.state.idvView.correcttext[i];
+  //     const bad = errs.bad;
+  //     const type = errs.type;
+  //     const better = errs.better.slice(0, 2).join(" , ");
+  
+  //     result.push(
+  //       <div key={i}>
+  //       <ul>
+  //         <li>Err N# {i + 1}</li>
+  //         <li>bad: {bad} </li>
+  //         <li>better: {better} </li>
+  //         <li>type: {type} </li>
+  //       </ul>
+  //         --------------
+  //       </div>
+  //     );
+  //   }
+  //   // this.state.idvView = '';
+  //   // this.setState({idvView: ''})
+  //   return result;
+  // }
+  
+  // renderAllCorrections() {
+  //   let result = [];
+  
+  //   for (let i = 0; i < this.state.prevs.length; i++) {
+  //     const errs = this.state.prevs[i];
+  //     const date = new Date(errs.date);
+  
+  //     result.push(
+  //       <div key={i}>
+  //         <button onClick={() => this.setState({ idvView: errs })}>
+  //           {date.toLocaleString()}
+  //         </button>
+  //       </div>
+  //     );
+  //   }
+  
+  //   return result;
+  // }
