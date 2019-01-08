@@ -11,6 +11,10 @@ class GrammarForm extends React.Component {
     this.transcript = "";
     this.handleSpeech = this.handleSpeech.bind(this);
 
+    this.speaker = new SpeechSynthesisUtterance();
+    this.speaker.lang = 'en-US';
+    this.speaker.text = 'Welcome To Enspire';
+    speechSynthesis.speak(this.speaker);
 
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,7 +45,7 @@ class GrammarForm extends React.Component {
       // });
       // this.transcript = "";
 
-      let children = Array.from(document.querySelectorAll(".text > p"));
+      // let children = Array.from(document.querySelectorAll(".text > p"));
       // children.forEach(child => {
       //     child.parentNode.removeChild(child);
       // });
@@ -53,12 +57,12 @@ class GrammarForm extends React.Component {
       this.recognition.interimResults = true;
 
       const texts = document.querySelector(".text");
-      // console.log(texts)
+
       let p = document.createElement("p");
       texts.appendChild(p);
 
       this.recognition.addEventListener("result", e => {
-        // console.log(e)
+
         const transcript = Array.from(e.results)
           .map(result => result[0])
           .map(result => result.transcript)
@@ -156,7 +160,8 @@ class GrammarForm extends React.Component {
         </div>
       );
     }
-    this.state.idvView = '';
+    // this.state.idvView = '';
+    // this.setState({idvView: ''})
     return result;
   }
 
@@ -179,7 +184,12 @@ class GrammarForm extends React.Component {
     return result;
   }
 
-  // how is you ? I'm a engeneer. i'm work at A / a
+
+  speak(text) {
+    this.speaker.text = text
+    speechSynthesis.speak(this.speaker);
+  }
+
 
   renderErrors() {
     return (
@@ -196,6 +206,7 @@ class GrammarForm extends React.Component {
     if (this.props.lastCorrection) {
       numErros = this.props.lastCorrection.correcttext.length;
     }
+
 
     let buttonText = this.state.stream ? "Stop" : "Record";
   
@@ -227,6 +238,7 @@ class GrammarForm extends React.Component {
             </div>
             <input type="submit" value="Check Grammar" />
           </form>
+            <button onClick={() => this.speak(this.state.text)}>Read</button>
           <div>
             <h3> Number of errors: {numErros} </h3>
             {this.renderLastCorrect()}
