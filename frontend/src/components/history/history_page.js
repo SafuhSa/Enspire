@@ -14,7 +14,7 @@ class HistoryPage extends React.Component {
         this.renderIndividual = this.renderIndividual.bind(this);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.fetchCorrections();
     }
 
