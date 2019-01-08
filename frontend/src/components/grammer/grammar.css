@@ -1,7 +1,11 @@
 .grammar-page {
     margin: 100px;
+    font-family:'Montserrat';
 }
 
+.floater {
+  display: flex;
+}
 .record-button {
   margin: 6px 8px;
   border-radius: 8px;
