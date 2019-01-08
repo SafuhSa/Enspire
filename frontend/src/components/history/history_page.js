@@ -12,45 +12,36 @@ class HistoryPage extends React.Component {
         this.state = { idvView: ''};
         this.renderAllCorrections = this.renderAllCorrections.bind(this);
         this.renderIndividual = this.renderIndividual.bind(this);
-        //  this.state = { width: 500 };
-        this.handleBarClick = this.handleBarClick.bind(this)
         this.populateData = this.populateData.bind(this)
+        this.displaymistakes = this.displaymistakes.bind(this)
     }
     populateData() {
         var corrections = this.props.allCorrections;
         data = []
-    
         if (!corrections) {
             return "no Date for you"
         } else {
-            for (var i = 0; i < corrections.length; i++) {
-              
+            for (var i = 0; i < corrections.length; i++) {  
                 var date = new Date(corrections[i].date).toDateString();
-
                 var numErrors = corrections[i].correcttext.length
-
                 for (var i = 0; i < data.length; i++) {
-
                     if (data[i].text === date) {
                         
                         console.log(corrections[i])
                         if (corrections[i].correcttext === undefined){
-
                         }else{
                         numErrors = corrections[i].correcttext.length + data[i].value
                         }
-
-
                     }
                 }
-                var obj = { text: date, value: numErrors }
-
-                data.push(obj)
+            var obj = { text: date, value: numErrors }
+            data.push(obj)
             }
         }
         return <div className='bar-chart' style={{ width: "50%" }}>
-            <BarChart className="bar-group" width={500} height={300} margin={margin} data={data} onBarClick={this.handleBarClick} />
+            <BarChart className="bar-group" width={500} height={300} margin={margin} data={data} onBarClick={(element, id) => this.displaymistakes(element.text)} />
         </div>
+  
     }
 
 
@@ -58,14 +49,32 @@ class HistoryPage extends React.Component {
         this.props.fetchCorrections();
         
     }
-    handleBarClick(element, id) {
-        // debugger
-       this.renderIndividual()
+    displaymistakes(inp){
+        if (!this.props.allCorrections) return null;
+        debugger
+        // var inp = element.text
+        let result = [];
+        for (let i = 0; i < this.props.allCorrections.length; i++) {
+            const errs = this.props.allCorrections[i];
+            const date = new Date(errs.date).toDateString();
+            const name = errs.name
+            
+            if(date == inp){
+                result.push(
+                    <div className='history-list' key={i}>
+                        {name}
+                        <button onClick={() => this.setState({ idvView: errs })}>
+                            {date.toLocaleString()}
+                        </button>
+                    </div>
+                );
+            }
+        }
+        return result
     }
 
     renderIndividual() {
         if (!this.state.idvView) return null;
-
         let result = [];
         debugger
         result.push(
@@ -92,7 +101,6 @@ class HistoryPage extends React.Component {
         </div>
             );
         }
-        // this.setState({idvView: ''})
         this.state.idvView = '';
         return result;
     }
@@ -115,14 +123,15 @@ class HistoryPage extends React.Component {
                 </div>
             );
         }
-       
-       
         return result;
     }
 
     render() {
-       
-    
+        var x = <div className="errors"></div>
+        if(this.displaymistakes()){
+            x=this.displaymistakes()
+        }
+            
         return <div className="history-page">
             <div className="history-flex">
               <div className="left-side">
@@ -130,6 +139,7 @@ class HistoryPage extends React.Component {
                   <h1 className="history-title">Errors Over Time: </h1>
                   {this.populateData()}
                 </div>
+<<<<<<< HEAD
 
                 <div className="history-list">
                   <h1 className="history-title">Previous Sessions: </h1>
@@ -141,6 +151,11 @@ class HistoryPage extends React.Component {
                     <h1 className="history-title">Selected Errors: </h1>
                 {this.renderIndividual()}
               </div>
+=======
+                {this.populateData()}
+              {this.renderIndividual()}
+                {x}
+>>>>>>> ddb4535f788e5709039cf12bd0dca1ead12919e9
             </div>
           </div>;
     }
