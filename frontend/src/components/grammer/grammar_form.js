@@ -206,63 +206,59 @@ class GrammarForm extends React.Component {
     let buttonText = this.state.stream ? "Stop" : "Record";
 
     return <div className="grammar-page">
-        <br/><br/>
-        <div className='grammar-box'>
+        <br />
+        <br />
+        <div className="grammar-box">
           <div className="flex">
             <button className="change-button">Change Topic</button>
-            <h1 className='interview'>Topic: Interview</h1>
+            <h1 className="interview">Topic: Interview</h1>
           </div>
 
           <div className="flex">
             <button className="change-button">New Prompt</button>
-            <h2 className='interview'> Prompt: What is your greatest weakness?</h2>
+            <h2 className="interview">
+              {" "}
+              Prompt: What is your greatest weakness?
+            </h2>
           </div>
 
-      Name:
-          <input type="text" onChange={this.updateName} value={this.state.name}></input>
           <div className="text hidden" />
-          <br/>
+          <br />
 
-          <div className='flex-right'>
-            <button className='hidden'></button>
-            <button 
-              className="record-button" 
-              onClick={this.handleSpeech}>
+          <div className="flex-right">
+            <div className='interview'>
+              Title:
+              <input 
+                className='title-input'
+                placeholder='Enter Title of Recording'
+                type="text" 
+                onChange={this.updateName} 
+                value={this.state.name} />
+            </div>
+            <button className="record-button" onClick={this.handleSpeech}>
               {buttonText}
             </button>
-          
-          </div>  
-       
+          </div>
 
-      
-       
           <form onSubmit={this.handleSubmit}>
             {this.renderErrors()}
             <div>
-              <textarea 
-                className='text-input'
-                value={this.state.text} 
-                onChange={this.updatetext} />
-            </div>
-            
-            <div className='flex-right'>
-              <button className='hidden'></button>
-              <input 
-                className='grammar-button'
-                type="submit" 
-                value="Check Grammar" />
+              <textarea className="text-input" value={this.state.text} onChange={this.updatetext} />
             </div>
 
+            <div className="flex-right">
+              <button className="hidden" />
+              <input className="grammar-button" type="submit" value="Check Grammar" />
+            </div>
           </form>
 
-            <button onClick={() => this.speak(this.state.text)}>Read</button>
+          <button onClick={() => this.speak(this.state.text)}>Read</button>
           <div>
             <h3> Number of errors: {numErros} </h3>
             {this.renderLastCorrect()}
           </div>
-        </div> 
-       
-    </div>  
+        </div>
+      </div>;  
   }
 }
 
