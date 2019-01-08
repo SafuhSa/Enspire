@@ -61,7 +61,8 @@ class HistoryPage extends React.Component {
     }
     handleBarClick(element, id) {
         // debugger
-       this.renderIndividual()
+        // this.setState({ idvView: errs });
+    //    this.renderIndividual()
     }
 
     renderIndividual() {
