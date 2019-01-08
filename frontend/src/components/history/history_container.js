@@ -4,7 +4,7 @@ import HistoryPage from './history_page'
 
 
 const mapStateToProps = state => {
-
+    debugger
     return {
         errors: state.errors.text,
         lastCorrection: state.correction.last,

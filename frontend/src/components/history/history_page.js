@@ -1,21 +1,59 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./history.css"
+import BarChart from "react-bar-chart";
+var data = [];
+
+const margin = { top: 50, right: 20, bottom: 60, left: 40 };
 
 class HistoryPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = { idvView: ''};
-
-
-
-
         this.renderAllCorrections = this.renderAllCorrections.bind(this);
         this.renderIndividual = this.renderIndividual.bind(this);
+        //  this.state = { width: 500 };
+        this.handleBarClick = this.handleBarClick.bind(this)
+        this.populateData = this.populateData.bind(this)
     }
+    populateData() {
+        var corrections = this.props.allCorrections;
+        debugger
+    
+        if (!corrections) {
+            return "no Date for you"
+        } else {
+            for (var i = 0; i < corrections.length; i++) {
+                var date = new Date(corrections[i].date).toDateString();
+
+                var numErrors = corrections[i].correcttext.length
+
+                for (var i = 0; i < data.length; i++) {
+
+                    if (data[i].text === date) {
+
+                        numErrors = corrections[i].correcttext.length + data[i].value
+
+
+                    }
+                }
+                var obj = { text: date, value: numErrors }
+
+                data.push(obj)
+            }
+        }
+        return <div style={{ width: "50%" }}>
+            <BarChart className="bar-group" width={500} height={500} margin={margin} data={data} onBarClick={this.handleBarClick} />
+        </div>
+    }
+
 
     componentDidMount() {
         this.props.fetchCorrections();
+        
+    }
+    handleBarClick(element, id) {
+        console.log(`The bin ${element.text} with id ${id} was clicked`);
     }
 
     renderIndividual() {
@@ -69,16 +107,20 @@ class HistoryPage extends React.Component {
                 </div>
             );
         }
-
+       
+      
         return result;
     }
 
     render() {
+       
     
         return <div className='history-page'>
             ------------++++++++++++++------
             History: {this.renderAllCorrections()}
+            {this.populateData()}
             {this.renderIndividual()}
+            
 
         </div >
     }
