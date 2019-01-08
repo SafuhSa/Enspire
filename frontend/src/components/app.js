@@ -18,7 +18,9 @@ import Speech from './speech/speech_container'
 const App = () => (
   <div>
     <NavBarContainer />
-    <AuthRoute path="/" component={MainPage} />
+    <AuthRoute exact path="/" component={MainPage} />
+    <AuthRoute exact path="/login" component={MainPage} />
+    <AuthRoute exact path="/signup" component={MainPage} />
     {/* <Performance /> */}
 
     <Switch>
@@ -26,8 +28,10 @@ const App = () => (
       <ProtectedRoute exact path="/performance" component={Performance} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/history" component={HistoryContainer} />
+
       <ProtectedRoute exact path="/grammar" component={GrammarContainer} />
       <Route exact path="/speech" component={Speech} />
+      <ProtectedRoute path="/" component={GrammarContainer} />
     </Switch>
   </div>
 );

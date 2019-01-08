@@ -4,7 +4,7 @@ import "./history.css"
 import BarChart from "react-bar-chart";
 var data = [];
 
-const margin = { top: 50, right: 20, bottom: 60, left: 40 };
+const margin = { top: 10, right: 20, bottom: 60, left: 40 };
 
 class HistoryPage extends React.Component {
     constructor(props) {
@@ -26,6 +26,8 @@ class HistoryPage extends React.Component {
                 var numErrors = corrections[i].correcttext.length
                 for (var i = 0; i < data.length; i++) {
                     if (data[i].text === date) {
+                        
+                        console.log(corrections[i])
                         if (corrections[i].correcttext === undefined){
                         }else{
                         numErrors = corrections[i].correcttext.length + data[i].value
@@ -36,11 +38,10 @@ class HistoryPage extends React.Component {
             data.push(obj)
             }
         }
-    return <div style={{ width: "50%" }}>
-        <BarChart className="bar-group" width={500} height={500} margin={margin} data={data} onBarClick 
-        = {(element,id)=>this.displaymistakes(element.text)} 
-        />
-    </div>
+        return <div className='bar-chart' style={{ width: "50%" }}>
+            <BarChart className="bar-group" width={500} height={300} margin={margin} data={data} onBarClick={(element, id) => this.displaymistakes(element.text)} />
+        </div>
+  
     }
 
 
@@ -77,7 +78,8 @@ class HistoryPage extends React.Component {
         let result = [];
         debugger
         result.push(
-            <div key={'text'}>
+            <div className='text-selection' key={'text'}>
+                <h2>Text Selection: </h2>
                 {this.state.idvView.wrongtext}
             </div>
         )
@@ -89,8 +91,8 @@ class HistoryPage extends React.Component {
 
             result.push(
                 <div key={i}>
-                    <ul>
-                        <li>Err N# {i + 1}</li>
+                    <ul className='error-list'>
+                        <li className='error-title'>Error: {i + 1}</li>
                         <li>bad: {bad} </li>
                         <li>better: {better} </li>
                         <li>type: {type} </li>
@@ -132,13 +134,22 @@ class HistoryPage extends React.Component {
             
         return <div className="history-page">
             <div className="history-flex">
-                <div className='history-list'>
-                    <h1 className="history-title">Previous Sessions: </h1>
-                    {this.renderAllCorrections()}
+              <div className="left-side">
+                <div>
+                  <h1 className="history-title">Errors Over Time: </h1>
+                  {this.populateData()}
                 </div>
-                {this.populateData()}
-              {this.renderIndividual()}
-                {x}
+
+                <div className="history-list">
+                  <h1 className="history-title">Previous Sessions: </h1>
+                  {this.renderAllCorrections()}
+                </div>
+              </div>
+
+              <div className="right-side">
+                    <h1 className="history-title">Selected Errors: </h1>
+                {this.renderIndividual()}
+              </div>
             </div>
           </div>;
     }

@@ -47,7 +47,7 @@
 }
 
 .record-button {
-  margin: 2px 8px;
+  margin: 12px 8px;
   border-radius: 8px;
   padding: 5px 9px;
   box-sizing: border-box;
@@ -81,9 +81,14 @@
   font-size: 16px;
   height: 200px;
   width: 94%;
-  margin: 3%;
+  margin: auto;
   padding: 8px 15px;
 
+}
+
+.title-input {
+  width : 40vw;
+  margin-left: 30px;
 }
 
 .grammar-button {
