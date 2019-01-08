@@ -5,7 +5,7 @@ import "./grammar.css"
 class GrammarForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { text: "", prevs: "", idvView: '', stream: false };
+    this.state = { text: "", prevs: "", idvView: '', stream: false, increment: 0 };
 
 
     this.transcript = "";
@@ -129,8 +129,23 @@ class GrammarForm extends React.Component {
   }
 
   handlePormpt() {
-    let arr = File.readlines('./interview')
-      
+    // let file = require('./interview.txt')
+    // var readline = require('readline');
+    // var fs = require('fs');
+    // // debugger
+    // var myInterface = readline.createInterface({
+    //   input: fs.createReadStream("./interview.txt")
+    // });
+
+    // require("fs")
+      // .readFileSync("interview.txt")
+      // .toString()
+      // .split("\n");
+      // debugger
+
+    const arr = [ "Hi! How are you?", "What have you been up to today?", "Tell me about your family.", "What are your favorite foods?", "What would you like on your pizza?", "What is the weather like today?" ]
+
+    
   }
   
   renderErrors() {
