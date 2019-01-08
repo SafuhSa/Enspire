@@ -79,7 +79,10 @@ class GrammarForm extends React.Component {
   }
 
 
-  componentWillMount() {
+  // componentWillMount() {
+  //   this.props.fetchCorrections();
+  // }
+  componentDidMount(){
     this.props.fetchCorrections();
   }
 
