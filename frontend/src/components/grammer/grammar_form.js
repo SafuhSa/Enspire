@@ -141,6 +141,7 @@ class GrammarForm extends React.Component {
     let idx = (this.prompt.indexOf(this.state.prompt) + 1) % this.prompt.length;
     let text = this.prompt[idx];
     this.setState({ prompt: text });
+    this.speak(text);
   }
 
   changeTopic() {
@@ -186,7 +187,7 @@ class GrammarForm extends React.Component {
 
           <div className="flex">
             <button className="change-button" onClick={this.handlePormpt.bind(this)} >New Prompt</button>
-                {this.speak(this.state.prompt)}
+                {/* {this.speak(this.state.prompt)} */}
 
             <h2 className="interview">
                 {this.state.prompt}
