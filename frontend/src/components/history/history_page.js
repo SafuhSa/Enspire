@@ -18,12 +18,13 @@ class HistoryPage extends React.Component {
     }
     populateData() {
         var corrections = this.props.allCorrections;
-        debugger
+        data = []
     
         if (!corrections) {
             return "no Date for you"
         } else {
             for (var i = 0; i < corrections.length; i++) {
+              
                 var date = new Date(corrections[i].date).toDateString();
 
                 var numErrors = corrections[i].correcttext.length
@@ -31,8 +32,14 @@ class HistoryPage extends React.Component {
                 for (var i = 0; i < data.length; i++) {
 
                     if (data[i].text === date) {
+                        
+                        // debugger
+                        console.log(corrections[i])
+                        if (corrections[i].correcttext === undefined){
 
+                        }else{
                         numErrors = corrections[i].correcttext.length + data[i].value
+                        }
 
 
                     }
@@ -53,7 +60,8 @@ class HistoryPage extends React.Component {
         
     }
     handleBarClick(element, id) {
-        console.log(`The bin ${element.text} with id ${id} was clicked`);
+        // debugger
+       this.renderIndividual()
     }
 
     renderIndividual() {
@@ -108,7 +116,7 @@ class HistoryPage extends React.Component {
             );
         }
        
-      
+       
         return result;
     }
 
