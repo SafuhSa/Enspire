@@ -8,6 +8,7 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import Performance from './peroformace'
 import GrammarContainer from './grammer/grammar_container'
+import HistoryContainer from './history/history_container'
 
 import './reset.css'
 
@@ -18,10 +19,11 @@ const App = () => (
   <div>
     {/* <Performance /> */}
     <NavBarContainer />
-    <AuthRoute path="/" component={MainPage} />
+    <AuthRoute exact path="/(|login|signup)" component={MainPage} />
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <ProtectedRoute exact path="/history" component={HistoryContainer} />
       <ProtectedRoute exact path="/grammar" component={GrammarContainer} />
       <Route exact path="/speech" component={Speech} />
     </Switch>
