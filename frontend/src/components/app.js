@@ -17,13 +17,13 @@ import Speech from './speech/speech_container'
 
 const App = () => (
   <div>
-    <Route path="/performance" component={Performance} />
     <NavBarContainer />
     <AuthRoute path="/" component={MainPage} />
     {/* <Performance /> */}
-   
+
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
+      <ProtectedRoute exact path="/performance" component={Performance} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/history" component={HistoryContainer} />
       <ProtectedRoute exact path="/grammar" component={GrammarContainer} />

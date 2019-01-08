@@ -22,7 +22,7 @@ class HistoryPage extends React.Component {
         if (!this.state.idvView) return null;
 
         let result = [];
-
+        debugger
         result.push(
             <div key={'text'}>
                 {this.state.idvView.wrongtext}
@@ -46,7 +46,8 @@ class HistoryPage extends React.Component {
         </div>
             );
         }
-        this.setState({idvView: ''})
+        // this.setState({idvView: ''})
+        this.state.idvView="";
         return result;
     }
 
@@ -58,9 +59,10 @@ class HistoryPage extends React.Component {
         for (let i = 0; i < this.props.allCorrections.length; i++) {
             const errs = this.props.allCorrections[i];
             const date = new Date(errs.date);
-
+            const name = errs.name
             result.push(
                 <div key={i}>
+                {name}
                     <button onClick={() => this.setState({ idvView: errs })}>
                         {date.toLocaleString()}
                     </button>

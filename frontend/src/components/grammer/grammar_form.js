@@ -5,17 +5,15 @@ import "./grammar.css"
 class GrammarForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { text: "", prevs: "", idvView: '', stream: false };
-
+    this.state = { text: "", name: "", prevs: "", idvView: "", stream: false };
 
     this.transcript = "";
     this.handleSpeech = this.handleSpeech.bind(this);
 
-
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.updatetext = this.updatetext.bind(this);
+    this.updateName = this.updateName.bind(this)
     this.renderLastCorrect = this.renderLastCorrect.bind(this);
     this.renderAllCorrections = this.renderAllCorrections.bind(this);
     this.renderIndividual = this.renderIndividual.bind(this);
@@ -27,13 +25,12 @@ class GrammarForm extends React.Component {
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (this.state.stream) {
-
       this.setState({ stream: false });
       this.recognition.stop();
       this.recognition.removeEventListener("end", this.recognition.start);
       this.recognition = null;
 
-      this.setState({text: this.transcript })
+      this.setState({ text: this.transcript });
       // console.log("advxcawbsDv" + this.transcript)
       // this.props.createSpeech({
       //   user: this.props.currentUser.id,
@@ -46,7 +43,6 @@ class GrammarForm extends React.Component {
       //     child.parentNode.removeChild(child);
       // });
     } else {
-
       this.setState({ stream: true });
 
       this.recognition = new SpeechRecognition();
@@ -67,7 +63,7 @@ class GrammarForm extends React.Component {
         p.textContent = transcript;
         if (e.results[0].isFinal) {
           this.transcript += p.textContent + ". ";
-          this.setState({ text: this.transcript })
+          this.setState({ text: this.transcript });
           p = document.createElement("p");
           texts.appendChild(p);
         }
@@ -78,11 +74,10 @@ class GrammarForm extends React.Component {
     }
   }
 
-
   // componentWillMount() {
   //   this.props.fetchCorrections();
   // }
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchCorrections();
   }
 
@@ -97,19 +92,25 @@ class GrammarForm extends React.Component {
       text: e.currentTarget.value
     });
   }
+  updateName(e) {
+    this.setState({
+      name: e.currentTarget.value
+    });
+  }
 
   handleSubmit(e) {
     e.preventDefault();
-
-    this.props.correct(this.state.text);
+    debugger
+      let obj = {text:this.state.text,name:this.state.name}
+    this.props.correct(obj);
+    // this.props.correct(this.state.name);
   }
 
-  
   renderLastCorrect() {
     let responses = this.props.lastCorrection;
     if (!responses) return null;
     let result = [];
-    
+
     for (let i = 0; i < responses.correcttext.length; i++) {
       const errs = responses.correcttext[i];
       const bad = errs.bad;
@@ -118,13 +119,13 @@ class GrammarForm extends React.Component {
 
       result.push(
         <div key={i}>
-         <ul>
-          <li>Err N# {i + 1}</li>
-          <li>bad: {bad} </li>
-          <li>better: {better} </li>
-          <li>type: {type} </li>
-          ------------------------------------
-        </ul>
+          <ul>
+            <li>Err N# {i + 1}</li>
+            <li>bad: {bad} </li>
+            <li>better: {better} </li>
+            <li>type: {type} </li>
+            ------------------------------------
+          </ul>
         </div>
       );
     }
@@ -132,15 +133,11 @@ class GrammarForm extends React.Component {
   }
 
   renderIndividual() {
-    if (!this.state.idvView) return  null;
+    if (!this.state.idvView) return null;
 
     let result = [];
-    
-    result.push(
-      <div key={'text'}>
-        {this.state.idvView.wrongtext}
-      </div>
-    )
+
+    result.push(<div key={"text"}>{this.state.idvView.wrongtext}</div>);
     for (let i = 0; i < this.state.idvView.correcttext.length; i++) {
       const errs = this.state.idvView.correcttext[i];
       const bad = errs.bad;
@@ -149,17 +146,17 @@ class GrammarForm extends React.Component {
 
       result.push(
         <div key={i}>
-        <ul>
-          <li>Err N# {i + 1}</li>
-          <li>bad: {bad} </li>
-          <li>better: {better} </li>
-          <li>type: {type} </li>
-        </ul>
+          <ul>
+            <li>Err N# {i + 1}</li>
+            <li>bad: {bad} </li>
+            <li>better: {better} </li>
+            <li>type: {type} </li>
+          </ul>
           --------------
         </div>
       );
     }
-    this.state.idvView = '';
+    this.state.idvView = "";
     return result;
   }
 
@@ -201,9 +198,9 @@ class GrammarForm extends React.Component {
     }
 
     let buttonText = this.state.stream ? "Stop" : "Record";
-  
 
-    return <div className="grammar-page">
+    return (
+      <div className="grammar-page">
         <div>
           <div className="floater">
             <button className="record-button">Change Topic</button>
@@ -214,7 +211,8 @@ class GrammarForm extends React.Component {
             <button className="record-button">New Prompt</button>
             <h2> Prompt: What is your greatest weakness?</h2>
           </div>
-
+          Name:
+            <input type="text" onChange={this.updateName} value={this.state.name}></input>
           <div className="text" />
           <button className="record-button" onClick={this.handleSpeech}>
             {buttonText}
@@ -235,7 +233,8 @@ class GrammarForm extends React.Component {
             {this.renderLastCorrect()}
           </div>
         </div>
-      </div>;
+      </div>
+    );
   }
 }
 
