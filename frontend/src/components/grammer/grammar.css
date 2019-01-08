@@ -1,26 +1,106 @@
 .grammar-page {
-    margin: 100px;
+    height: 100vh;
+    width: 100vw;
+    /* margin: 100px; */
     font-family:'Montserrat';
+    font-size: 12px;
+    background-color: #003300;
 }
 
-.floater {
+.grammar-box {
+  width: 74vw;
+  margin: auto;
+  margin-top: 100px;
+  padding: 50px 50px;
+  border-radius: 12px;
+  border: 3px solid #004d00;
+  background-color: white;
+}
+
+.flex {
   display: flex;
 }
-.record-button {
+
+.flex-right {
+  display: flex;
+  /* position: fixed; */
+  width: 100%;
+  justify-content: space-between;
+ 
+}
+
+.change-button {
   margin: 6px 8px;
   border-radius: 8px;
   padding: 5px 9px;
+  box-sizing: border-box;
+ background-color: #004d00;
+  font-weight: 800;
+  color: white;
+}
 
-  
-  /* background-color: #004d00;
-  font-weight: 600;
-  color: white; */
-  /* background-color: #F4FFF6; */
-    border: 2px solid #004d00; 
+.change-button:hover {
+  background-color: #004000;
+  /* border: 3px solid #004d00; */
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.record-button {
+  margin: 2px 8px;
+  border-radius: 8px;
+  padding: 5px 9px;
+  box-sizing: border-box;
+  background-color: #e60000;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+
 }
 
 .record-button:hover {
-  background-color: #f2f2f2;
+  background-color: #b30000;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.interview {
+  font-size: 18px;
+  font-weight: bold;
+  color: #404040;
+  margin: 10px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.text-input {
+  border-radius: 12px;
   border: 3px solid #004d00;
+  font-size: 16px;
+  height: 200px;
+  width: 94%;
+  margin: 3%;
+  padding: 8px 15px;
+
+}
+
+.grammar-button {
+  margin: 16px 8px;
+  border-radius: 8px;
+  padding: 5px 9px;
+  box-sizing: border-box;
+  background-color: #e60000;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+
+
+}
+
+.grammar-button:hover {
+  background-color: #b30000;
+  box-sizing: border-box;
   cursor: pointer;
 }
