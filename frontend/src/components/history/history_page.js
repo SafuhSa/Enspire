@@ -61,7 +61,7 @@ class HistoryPage extends React.Component {
             const date = new Date(errs.date);
 
             result.push(
-                <div key={i}>
+                <div className='history-list' key={i}>
                     <button onClick={() => this.setState({ idvView: errs })}>
                         {date.toLocaleString()}
                     </button>
@@ -74,12 +74,15 @@ class HistoryPage extends React.Component {
 
     render() {
     
-        return <div className='history-page'>
-            ------------++++++++++++++------
-            History: {this.renderAllCorrections()}
-            {this.renderIndividual()}
-
-        </div >
+        return <div className="history-page">
+            <div className="history-flex">
+                <div className='history-list'>
+                    <h1 className="history-title">Previous Sessions: </h1>
+                    {this.renderAllCorrections()}
+                </div>
+              {this.renderIndividual()}
+            </div>
+          </div>;
     }
 }
 

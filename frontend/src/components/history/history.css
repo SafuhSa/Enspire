@@ -1,4 +1,19 @@
 .history-page {
     margin: 100px;
-    
+    height: 100vh;
+    width: 100vw;
+   
+    font-family:'Montserrat';
+    font-size: 12px;
+}
+
+.history-flex {
+    display: flex
+}
+
+.history-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #004d00;
 }
