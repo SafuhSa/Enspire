@@ -238,13 +238,8 @@ class GrammarForm extends React.Component {
             <button className="record-button" onClick={this.handleSpeech}>
               {buttonText}
             </button>
-<<<<<<< HEAD
           </div>
 
-=======
-          
-          </div>  
->>>>>>> ddb4535f788e5709039cf12bd0dca1ead12919e9
           <form onSubmit={this.handleSubmit}>
             {this.renderErrors()}
             <div>

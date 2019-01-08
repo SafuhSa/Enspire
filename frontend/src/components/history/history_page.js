@@ -139,7 +139,6 @@ class HistoryPage extends React.Component {
                   <h1 className="history-title">Errors Over Time: </h1>
                   {this.populateData()}
                 </div>
-<<<<<<< HEAD
 
                 <div className="history-list">
                   <h1 className="history-title">Previous Sessions: </h1>
@@ -151,11 +150,6 @@ class HistoryPage extends React.Component {
                     <h1 className="history-title">Selected Errors: </h1>
                 {this.renderIndividual()}
               </div>
-=======
-                {this.populateData()}
-              {this.renderIndividual()}
-                {x}
->>>>>>> ddb4535f788e5709039cf12bd0dca1ead12919e9
             </div>
           </div>;
     }
