@@ -232,10 +232,6 @@ class GrammarForm extends React.Component {
             </button>
           
           </div>  
-       
-
-      
-       
           <form onSubmit={this.handleSubmit}>
             {this.renderErrors()}
             <div>
