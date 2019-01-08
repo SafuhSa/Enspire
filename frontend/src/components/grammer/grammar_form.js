@@ -216,11 +216,10 @@ class GrammarForm extends React.Component {
           <div className="flex">
             <button className="change-button">New Prompt</button>
             <h2 className='interview'> Prompt: What is your greatest weakness?</h2>
-
           </div>
 
       Name:
-            <input type="text" onChange={this.updateName} value={this.state.name}></input>
+          <input type="text" onChange={this.updateName} value={this.state.name}></input>
           <div className="text hidden" />
           <br/>
 
@@ -245,22 +244,25 @@ class GrammarForm extends React.Component {
                 value={this.state.text} 
                 onChange={this.updatetext} />
             </div>
+            
             <div className='flex-right'>
               <button className='hidden'></button>
               <input 
                 className='grammar-button'
                 type="submit" 
                 value="Check Grammar" />
-              </div>
+            </div>
+
           </form>
+
             <button onClick={() => this.speak(this.state.text)}>Read</button>
           <div>
             <h3> Number of errors: {numErros} </h3>
             {this.renderLastCorrect()}
           </div>
-        </div>
-      </div>
-    );
+        </div> 
+       
+    </div>  
   }
 }
 
