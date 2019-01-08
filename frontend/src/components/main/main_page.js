@@ -45,7 +45,7 @@ class MainPage extends React.Component {
           </div>
         </div>
         <footer className='foot'>Copyright &copy; 2019 Enspire</footer>
-      </div>;
+    </div>;
   }
 }
 

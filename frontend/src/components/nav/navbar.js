@@ -12,7 +12,9 @@ class NavBar extends React.Component {
 
   logoutUser(e) {
     e.preventDefault();
-    this.props.logout();
+    this.props.logout()
+  
+    // this.props.history.push('/')
   }
 
   handleDemo(e) {
@@ -24,14 +26,18 @@ class NavBar extends React.Component {
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
     if (this.props.loggedIn) {
-      return (
+      return <div className="navbar-right">
+          <div>
+            <Link to="/history">History</Link>
+          </div>
 
-        <div>
-          <button onClick={this.logoutUser}>Logout</button>
+          <button className="dark-green-button" onClick={this.logoutUser}>
+            Logout
+          </button>
+        </div>;
 
-        </div>
-      );
     } else {
+
       return <div className="navbar-right">
           <div><Link to={"/signup"}>Signup</Link></div>
           <div><Link to={"/login"}>Login</Link></div>

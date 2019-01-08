@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "../main/main_page.css"
+import "./grammar.css"
 
 class GrammarForm extends React.Component {
   constructor(props) {
@@ -203,20 +203,23 @@ class GrammarForm extends React.Component {
     let buttonText = this.state.stream ? "Stop" : "Record";
   
 
-    return (
-      <div  >
-        
+    return <div className="grammar-page">
         <div>
-          <h1>Record Conversation</h1>
-          <div className="text">
-
-
+          <div className="floater">
+            <button className="record-button">Change Topic</button>
+            <h1>Topic: Interview</h1>
           </div>
-          <button onClick={this.handleSpeech}>
+
+          <div className="floater">
+            <button className="record-button">New Prompt</button>
+            <h2> Prompt: What is your greatest weakness?</h2>
+          </div>
+
+          <div className="text" />
+          <button className="record-button" onClick={this.handleSpeech}>
             {buttonText}
           </button>
         </div>
-
 
         <div>
           <h3>TEXT CORRECTION</h3>
@@ -231,11 +234,8 @@ class GrammarForm extends React.Component {
             <h3> Number of errors: {numErros} </h3>
             {this.renderLastCorrect()}
           </div>
-          <div>History: {this.renderAllCorrections()}</div>
-          { this.renderIndividual()}
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 
