@@ -181,8 +181,10 @@ class GrammarForm extends React.Component {
         <br />
         <div className="grammar-box">
           <div className="flex">
+
             <button className="change-button" onClick={this.changeTopic.bind(this)} >Change Topic</button>
             <h1 className="interview">{this.topic}</h1>
+
           </div>
 
           <div className="flex">
@@ -190,7 +192,9 @@ class GrammarForm extends React.Component {
                 {/* {this.speak(this.state.prompt)} */}
 
             <h2 className="interview">
+
                 {this.state.prompt}
+
             </h2>
           </div>
 
@@ -220,10 +224,13 @@ class GrammarForm extends React.Component {
 
             <div className="flex-right">
               <button className="hidden" />
+              <div>
+              <button className='grammar-button' onClick={() => this.speak(this.state.text)}>Read Text</button>
               <input className="grammar-button" type="submit" value="Check Grammar" />
+              </div>
             </div>
           </form>
-          <button onClick={() => this.speak(this.state.text)}>Read</button>
+
           <div>
             <h3> Number of errors: {numErros} </h3>
             {this.renderLastCorrect()}

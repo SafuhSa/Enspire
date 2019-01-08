@@ -5,6 +5,7 @@
     font-family:'Montserrat';
     font-size: 12px;
     background-color: #003300;
+    
 }
 
 .grammar-box {
@@ -30,28 +31,35 @@
 }
 
 .change-button {
-  margin: 6px 8px;
+  /* margin: 6px 8px;
   border-radius: 8px;
   padding: 5px 9px;
   box-sizing: border-box;
  background-color: #004d00;
   font-weight: 800;
-  color: white;
+  color: white; */
+  font-size: 16px;
+  color:  #004d00;
+  margin: 6px 8px;
+  border-radius: 8px;
+  padding: 5px 9px;
 }
 
 .change-button:hover {
-  background-color: #004000;
-  /* border: 3px solid #004d00; */
-  box-sizing: border-box;
+  /* background-color: #004000;
+  border: 3px solid #004d00;
+  box-sizing: border-box; */
+
+  font-weight: bold;
   cursor: pointer;
 }
 
 .record-button {
   margin: 12px 8px;
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 5px 9px;
-  box-sizing: border-box;
-  background-color: #e60000;
+  
+  background-color: rgb(255, 140, 26);
   font-weight: bold;
   font-size: 16px;
   color: white;
@@ -59,7 +67,7 @@
 }
 
 .record-button:hover {
-  background-color: #b30000;
+  background-color: rgb(230, 115, 0);
   box-sizing: border-box;
   cursor: pointer;
 }
@@ -96,7 +104,7 @@
   border-radius: 8px;
   padding: 5px 9px;
   box-sizing: border-box;
-  background-color: #e60000;
+  background-color: rgb(255, 140, 26);
   font-weight: bold;
   font-size: 16px;
   color: white;
@@ -105,7 +113,7 @@
 }
 
 .grammar-button:hover {
-  background-color: #b30000;
+  background-color: rgb(230, 115, 0);
   box-sizing: border-box;
   cursor: pointer;
 }
