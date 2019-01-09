@@ -61,7 +61,7 @@ class SignupForm extends React.Component {
     return (
       <div className="login-form-container">
           <form className="login-form-box" onSubmit={this.handleSubmit}>
-            <h1 className='login-text'>Your first steps start now or something</h1>
+            <h1 className='login-text'>Your first steps start now!</h1>
           <div className="login-form">
             <br />
             <input 
@@ -97,11 +97,11 @@ class SignupForm extends React.Component {
               value="Sign up" />
             {this.renderErrors()}
           </div>
-          <input 
+          {/* <input 
             className='login-submit'
             type='submit' 
             value='Demo Log in' 
-            onClick={() => this.props.login(demo)} />
+            onClick={() => this.props.login(demo)} /> */}
         </form>
 
       </div>

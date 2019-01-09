@@ -92,6 +92,12 @@
 
 .bold {
     /* font-weight: bold; */
-    color: #303030;
+    color: #304030;
     margin-left: 15px;
+
+}
+
+.error-list li {
+    padding: 3px 0px;
+
 }

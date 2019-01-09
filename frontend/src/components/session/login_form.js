@@ -92,11 +92,13 @@ class LoginForm extends React.Component {
               value="Submit" />
             {this.renderErrors()}
           </div>
-          <input 
+          <br/>
+          {/* <input 
             className='login-submit'
+            id='demo'
             type='submit'  
             value='Demo Log in' 
-            onClick={this.handleDemo.bind(this)}  />
+            onClick={this.handleDemo.bind(this)}  /> */}
         </form>
       </div>
     );

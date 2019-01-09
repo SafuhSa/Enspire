@@ -38,7 +38,7 @@ class HistoryPage extends React.Component {
             }
         }
         return <div className='bar-chart' style={{ width: "50%" }}>
-            <BarChart className="bar-group" width={500} height={300} margin={margin} data={data} onBarClick={(element, id) => this.displaymistakes(element.text)} />
+            <BarChart className="bar-group" width={440} height={300} margin={margin} data={data} onBarClick={(element, id) => this.displaymistakes(element.text)} />
         </div>
   
     }
@@ -93,7 +93,7 @@ class HistoryPage extends React.Component {
                   <li className="error-title">Error {i + 1}</li>
                     <li><span className='bold'>Type:</span> {type} </li>
                     <li><span className='bold'>Mistake:</span> {bad}</li>
-                    <li><span className='bold'>Better:</span> {better}</li>
+                    <li><span className='bold'>Fix:</span> {better}</li>
                 </ul>
                 <br />
                 <br />

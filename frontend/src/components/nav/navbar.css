@@ -53,6 +53,14 @@
   cursor: pointer;
 }
 
+.logout{
+  font-weight: bold;
+}
+
+.logout:hover {
+  color: rgb(179, 89, 0);
+}
+
 .dark-green-button {
   margin: 6px 16px;
   border-radius: 4px;
