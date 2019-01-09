@@ -7,7 +7,15 @@ const passport = require("passport");
 
 const users = require("./routes/api/users");
 const texts = require("./routes/api/texts");
-const speech=require("./routes/api/speech")
+const path = require("path");
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('frontend/build'));
+    app.get('/', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
+}
+
 
 
 
@@ -29,7 +37,7 @@ app.use(bodyParser.json());
 
 app.use("/api/users", users);
 app.use("/api/correctiontexts", texts);
-app.use("/api/speech", speech);
+
 
 
 

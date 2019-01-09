@@ -24,13 +24,12 @@ class HistoryPage extends React.Component {
             for (var i = 0; i < corrections.length; i++) {  
                 var date = new Date(corrections[i].date).toDateString();
                 var numErrors = corrections[i].correcttext.length
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].text === date) {
+                for (var j = 0; j < data.length; j++) {
+                    if (data[j].text === date) {
                         
-                        console.log(corrections[i])
                         if (corrections[i].correcttext === undefined){
                         }else{
-                        numErrors = corrections[i].correcttext.length + data[i].value
+                        numErrors = corrections[i].correcttext.length + data[j].value
                         }
                     }
                 }
@@ -51,15 +50,13 @@ class HistoryPage extends React.Component {
     }
     displaymistakes(inp){
         if (!this.props.allCorrections) return null;
-      
-        // var inp = element.text
         let result = [];
         for (let i = 0; i < this.props.allCorrections.length; i++) {
             const errs = this.props.allCorrections[i];
             const date = new Date(errs.date).toDateString();
             const name = errs.name
             
-            if(date == inp){
+            if(date === inp){
                 result.push(
                     <div className='history-list' key={i}>
                         {name}
@@ -130,10 +127,6 @@ class HistoryPage extends React.Component {
     }
 
     render() {
-        var x = <div className="errors"></div>
-        if(this.displaymistakes()){
-            x=this.displaymistakes()
-        }
             
         return <div className="history-page">
             <div className="history-flex">

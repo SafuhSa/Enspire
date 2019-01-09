@@ -9,7 +9,6 @@ const Text = require("../../models/Text");
 router.post("/", passport.authenticate('jwt', { session: false }), async (req, res) => {
   let apiResponse;
   let errors = {};
-  // debugger 
 
   if (!req.body.text.text){
     errors.text = "Text field is empty";
