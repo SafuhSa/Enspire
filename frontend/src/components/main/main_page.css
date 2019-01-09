@@ -6,7 +6,7 @@
 }
 
 .splash-bar {
-    margin-top: 66px;
+    margin-top: 63px;
     width: 100vw;
    
     
@@ -31,7 +31,8 @@
 
 .speech-bubble {
     font-size: 110px;
-    color: #004d00;
+    /* color: #005d00; */
+    color: grey;
     text-align: center;
     vertical-align: middle;
     margin-left: 30px;
@@ -77,14 +78,28 @@
     padding: 20px;
 }
 
-.splash-bottom div i {
+.icon{
     font-size: 42px;
-    color: grey;
+    color: #004d00;
     text-align: center;
-    
-   
     width: 100%;
     
+}
+
+.icon:hover {
+    color: rgb(230, 115, 0);
+}
+
+.hoverable {
+    color: #004d00
+}
+
+.hoverable:hover {
+    color: rgb(230, 115, 0);
+}
+
+.coders{
+    padding: 10px 0px 0px 25px;
 }
 
 .foot {
@@ -95,3 +110,4 @@
     position: absolute;
     left: 80%;
 }
+

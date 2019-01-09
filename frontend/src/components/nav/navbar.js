@@ -31,7 +31,7 @@ class NavBar extends React.Component {
             <Link to="/history">History</Link>
           </div>
 
-          <div onClick={this.logoutUser}>
+          <div onClick={this.logoutUser} className='logout'>
             Logout
           </div>
         </div>;

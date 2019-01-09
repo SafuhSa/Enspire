@@ -15,7 +15,7 @@ router.post("/", passport.authenticate('jwt', { session: false }), async (req, r
     return res.status(400).json(errors);
   }
   if (!req.body.text.name) {
-    errors.text = "name field is empty";
+    errors.text = "Please enter a title before saving";
     return res.status(400).json(errors);
   }
 
@@ -43,7 +43,7 @@ router.post("/", passport.authenticate('jwt', { session: false }), async (req, r
     });
    return newText.save().then(text => res.json(text))
   } else {
-    errors.text = "No Errs Found!! good job!";
+    errors.text = "Good Job!";
    return res.status(400).json(errors);
   } 
 });
