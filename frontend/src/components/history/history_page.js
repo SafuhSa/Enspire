@@ -19,7 +19,7 @@ class HistoryPage extends React.Component {
         var corrections = this.props.allCorrections;
         data = []
         if (!corrections) {
-            return "no Date for you"
+            return "no Data for you"
         } else {
             for (var i = 0; i < corrections.length; i++) {  
                 var date = new Date(corrections[i].date).toDateString();
@@ -40,7 +40,7 @@ class HistoryPage extends React.Component {
         console.log(data)
         // debugger
         return <div className='bar-chart' style={{ width: "50%" }}>
-            <BarChart className="bar-group" width={500} height={300} margin={margin} data={data} onBarClick={(element)=>alert(`On '${element.text}' you have ${element.value} number of errors`)}
+            <BarChart className="bar-group" width={440} height={300} margin={margin} data={data} onBarClick={(element)=>alert(`On '${element.text}' you have ${element.value} errors`)}
             // {(element, id) => this.displaymistakes(element.text)}
              />
         </div>
@@ -54,7 +54,6 @@ class HistoryPage extends React.Component {
     }
     displaymistakes(inp){
         if (!this.props.allCorrections) return null;
-
         let result = [];
         for (let i = 0; i < this.props.allCorrections.length; i++) {
             const errs = this.props.allCorrections[i];
@@ -78,29 +77,31 @@ class HistoryPage extends React.Component {
     renderIndividual() {
         if (!this.state.idvView) return null;
         let result = [];
-        result.push(
-            <div className='text-selection' key={'text'}>
-                <h2>Text Selection: </h2>
-                {this.state.idvView.wrongtext}
-            </div>
-        )
+      
+        result.push(<div className="text-errors" key={"text"}>
+            <p className="text-selection">Text Selection: </p>
+            <p className="selected-text">
+              {this.state.idvView.wrongtext}
+            </p>
+            <br />
+            <br />
+          </div>);
         for (let i = 0; i < this.state.idvView.correcttext.length; i++) {
             const errs = this.state.idvView.correcttext[i];
             const bad = errs.bad;
             const type = errs.type;
             const better = errs.better.slice(0, 2).join(" , ");
 
-            result.push(
-                <div key={i}>
-                    <ul className='error-list'>
-                        <li className='error-title'>Error: {i + 1}</li>
-                        <li>bad: {bad} </li>
-                        <li>better: {better} </li>
-                        <li>type: {type} </li>
-                    </ul>
-                    --------------
-        </div>
-            );
+            result.push(<div key={i}>
+                <ul className="error-list">
+                  <li className="error-title">Error {i + 1}</li>
+                    <li><span className='bold'>Type:</span> {type} </li>
+                    <li><span className='bold'>Mistake:</span> {bad}</li>
+                    <li><span className='bold'>Fix:</span> {better}</li>
+                </ul>
+                <br />
+                <br />
+              </div>);
         }
         this.state.idvView = '';
         return result;
@@ -113,16 +114,18 @@ class HistoryPage extends React.Component {
    
         for (let i = 0; i < this.props.allCorrections.length; i++) {
             const errs = this.props.allCorrections[i];
-            const date = new Date(errs.date);
+            const date = new Date(errs.date).toDateString();
             const name = errs.name
-            result.push(
-                <div className='history-list' key={i}>
-                    {name}
-                    <button onClick={() => this.setState({ idvView: errs })}>
-                        {date.toLocaleString()}
-                    </button>
+            result.push(<div className="history-list" key={i}>
+                <div 
+                    className='button-flex' 
+                    onClick={() => this.setState({idvView: errs})}>
+                  <h2 className="session-date">
+                    {date.toLocaleString()}{": "}
+                  </h2>
+                  <h3 className="session-title">{name}</h3>
                 </div>
-            );
+              </div>);
         }
         return result;
     }

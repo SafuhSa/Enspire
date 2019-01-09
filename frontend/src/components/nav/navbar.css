@@ -7,12 +7,14 @@
   position: fixed;
   top: 0;
   background-color: white;
+  opacity: 1;
+  z-index: 10;
   color: #004d00;
 }
 
 .navbar-left {
     margin: 16px;
-    font-size: 28px;
+    font-size: 26px;
     color: #004d00;
     font-weight: bold;
     font-family: 'Comfortaa';
@@ -51,19 +53,29 @@
   cursor: pointer;
 }
 
+.logout{
+  font-weight: bold;
+}
+
+.logout:hover {
+  color: rgb(179, 89, 0);
+}
+
 .dark-green-button {
-  margin: 6px 8px;
-  border-radius: 8px;
-  padding: 7px 9px;
+  margin: 6px 16px;
+  border-radius: 4px;
+  padding: 6px 9px;
   background-color: #004d00;
   font-weight: 800;
   color: white;
-  font-size: 14px
+  font-size: 14px;
+  /* height: 26px; */
 }
 
 .dark-green-button:hover {
   background-color: #004000;
-  font-size: 15px;
+  background-color: rgb(230, 115, 0);
+  
 }
 
 .bar-group{

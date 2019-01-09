@@ -2,20 +2,21 @@
   width: 100vw;
   height: 100vh;
   /* background-color: pink; */
+
 }
 
 .splash-bar {
-    margin-top: 70px;
+    margin-top: 63px;
     width: 100vw;
    
-    /* background-color: #005c00; */
-   
+    
+   /* background-color: #005c00; */
     /* background-image: url("https://wallpapercave.com/wp/u7maPeE.jpg"); */
     background-image: url('https://i.imgur.com/W9LidFq.jpg');
     background-position: center;
      /* background: rgba(0, 77, 0, 0.1); */
     /* box-shadow: 0 0 2px 2px #005c00; */
-    opacity: 0.5;
+    opacity: 0.8;
 
     
     text-align: center;
@@ -30,7 +31,8 @@
 
 .speech-bubble {
     font-size: 110px;
-    color: #004d00;
+    /* color: #005d00; */
+    color: grey;
     text-align: center;
     vertical-align: middle;
     margin-left: 30px;
@@ -76,14 +78,28 @@
     padding: 20px;
 }
 
-.splash-bottom div i {
+.icon{
     font-size: 42px;
-    color: grey;
+    color: #004d00;
     text-align: center;
-    
-   
     width: 100%;
     
+}
+
+.icon:hover {
+    color: rgb(230, 115, 0);
+}
+
+.hoverable {
+    color: #004d00
+}
+
+.hoverable:hover {
+    color: rgb(230, 115, 0);
+}
+
+.coders{
+    padding: 10px 0px 0px 25px;
 }
 
 .foot {
@@ -94,3 +110,4 @@
     position: absolute;
     left: 80%;
 }
+

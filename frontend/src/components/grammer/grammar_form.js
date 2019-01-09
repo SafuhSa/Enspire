@@ -117,17 +117,14 @@ class GrammarForm extends React.Component {
       const type = errs.type;
       const better = errs.better.slice(0, 2).join(" , ");
 
-      result.push(
-        <div key={i}>
-          <ul>
-            <li>Err N# {i + 1}</li>
-            <li>bad: {bad} </li>
-            <li>better: {better} </li>
-            <li>type: {type} </li>
-            ------------------------------------
-          </ul>
-        </div>
-      );
+      result.push(<div  key={i}>
+        <ul className="error-list">
+          <li className="error-title">Error {i + 1}</li>
+          <li><span className='bold'>Type:</span> {type} </li>
+          <li><span className='bold'>Mistake:</span> {bad}</li>
+          <li><span className='bold'>Fix:</span> {better}</li>
+        </ul>
+        </div>);
     }
     return result;
   }
@@ -178,49 +175,40 @@ class GrammarForm extends React.Component {
 
     let buttonText = this.state.stream ? "Stop" : "Record";
 
-    return (
-      <div className="grammar-page">
-        <br />
+    return <div className="grammar-page">
         <br />
         <div className="grammar-box">
           <div className="flex">
-
-            <button className="change-button" onClick={this.changeTopic.bind(this)} >Change Topic</button>
+            <button className="change-button" onClick={this.changeTopic.bind(this)}>
+              Change Topic
+            </button>
             <h1 className="interview">{this.topic}</h1>
-
           </div>
 
           <div className="flex">
-            <button className="change-button" onClick={this.handlePormpt.bind(this)} >New Prompt</button>
-                {/* {this.speak(this.state.prompt)} */}
-
-            <h2 className="interview">
-
-                {this.state.prompt}
-
-            </h2>
+            <button className="change-button" onClick={this.handlePormpt.bind(this)}>
+              New Prompt
+            </button>
+            {/* {this.speak(this.state.prompt)} */}
+            <h2 className="interview">{this.state.prompt}</h2>
           </div>
 
-          <div className="text hidden" />
+          <h3 className="render-errors">{this.renderErrors()}</h3>
           <br />
 
           <div className="flex-right">
-            <div className='interview'>
+            <div className="interview">
               Title:
-              <input 
-                className='title-input'
-                placeholder='Enter Title of Recording'
-                type="text" 
-                onChange={this.updateName} 
-                value={this.state.name} />
+              <input className="title-input" placeholder="Enter Title of Recording" type="text" onChange={this.updateName} value={this.state.name} />
             </div>
+          <div className="text">
+          </div>
             <button className="record-button" onClick={this.handleSpeech}>
               {buttonText}
             </button>
           </div>
 
           <form onSubmit={this.handleSubmit}>
-            {this.renderErrors()}
             <div>
               <textarea className="text-input" value={this.state.text} onChange={this.updatetext} />
             </div>
@@ -228,19 +216,20 @@ class GrammarForm extends React.Component {
             <div className="flex-right">
               <button className="hidden" />
               <div>
-              <button className='grammar-button' onClick={(e) => this.speak(this.state.text, e)}>Read Text</button>
-              <input className="grammar-button" type="submit" value="Check Grammar" />
+                <button className="grammar-button" onClick={() => this.speak(this.state.text)}>
+                  Read Text
+                </button>
+                <input className="grammar-button" type="submit" value="Check Grammar" />
               </div>
             </div>
           </form>
 
           <div>
-            <h3> Number of errors: {numErros} </h3>
-            {this.renderLastCorrect()}
+            {/* <h3> Number of errors: {numErros} </h3> */}
+            <div className='flex'>{this.renderLastCorrect()}</div>
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 
