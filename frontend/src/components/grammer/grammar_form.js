@@ -132,7 +132,10 @@ class GrammarForm extends React.Component {
     return result;
   }
 
-  speak(text) {
+  speak(text, e) {
+    if (e) {
+      e.preventDefault()
+    }
     this.speaker.text = text;
     speechSynthesis.speak(this.speaker);
   }
@@ -225,7 +228,7 @@ class GrammarForm extends React.Component {
             <div className="flex-right">
               <button className="hidden" />
               <div>
-              <button className='grammar-button' onClick={() => this.speak(this.state.text)}>Read Text</button>
+              <button className='grammar-button' onClick={(e) => this.speak(this.state.text, e)}>Read Text</button>
               <input className="grammar-button" type="submit" value="Check Grammar" />
               </div>
             </div>
