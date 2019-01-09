@@ -36,23 +36,62 @@
     font-weight: bold;
     margin-bottom: 20px;
     color: #004d00;
+
+    /* color: rgb(230, 115, 0) */
 }
 
 .right-side {
     width: 300px;
    
-    border: 3px solid #004d00;;
+    border: 3px solid rgb(230, 115, 0);
     border-radius: 10px;
     margin: 50px;
     padding: 20px;
 }
 
-.text-selection {
-    margin: 20px 0px;
+
+
+.button-flex {
+    display: flex;
+}
+
+.button-flex:hover {
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .error-title {
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 14px;
+    margin-bottom: 5px;
 
+}
+
+.session-title {
+    font-size: 14px;
+    margin: 4px 5px;
+    color: #003000;
+    /* font-weight: bold; */
+}
+
+.session-date {
+    margin: 6px 5px;
+    color: #404040;
+}
+
+.text-selection {
+     /* font-weight: bold; */
+    font-size: 16px;
+    color: #304030;
+    margin: 8px 0px;
+}
+
+.selected-text{
+    margin-left: 15px;
+}
+
+.bold {
+    /* font-weight: bold; */
+    color: #303030;
+    margin-left: 15px;
 }

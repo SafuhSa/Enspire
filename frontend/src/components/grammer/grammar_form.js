@@ -100,7 +100,7 @@ class GrammarForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
+  
       let obj = {text:this.state.text,name:this.state.name}
     this.props.correct(obj);
     // this.props.correct(this.state.name);
