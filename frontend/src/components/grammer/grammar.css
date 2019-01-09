@@ -4,7 +4,10 @@
     /* margin: 100px; */
     font-family:'Montserrat';
     font-size: 12px;
-    background-color: #003300;
+    background-color: rgba(0,51,0,0.5);
+   
+    /* background-color: #e6e6e6; */
+    /* background-image: url('https://wallpapercave.com/wp/u7maPeE.jpg'); */
     
 }
 
@@ -74,7 +77,7 @@
 
 .interview {
   font-size: 18px;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #404040;
   margin: 10px;
 }
@@ -101,19 +104,22 @@
 
 .grammar-button {
   margin: 16px 8px;
-  border-radius: 8px;
+  border-radius: 2px;
   padding: 5px 9px;
   box-sizing: border-box;
-  background-color: rgb(255, 140, 26);
-  font-weight: bold;
+  /* background-color: rgb(255, 140, 26); */
+  /* font-weight: bold; */
   font-size: 16px;
-  color: white;
+  /* color: white; */
+  color: #4d4d4d;
+  border: 1px solid rgb(255, 140, 26);
 
 
 }
 
 .grammar-button:hover {
-  background-color: rgb(230, 115, 0);
+  /* background-color: rgb(230, 115, 0); */
+  font-weight: bold;
   box-sizing: border-box;
   cursor: pointer;
 }

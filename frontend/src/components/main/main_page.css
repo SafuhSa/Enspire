@@ -2,20 +2,21 @@
   width: 100vw;
   height: 100vh;
   /* background-color: pink; */
+
 }
 
 .splash-bar {
-    margin-top: 70px;
+    margin-top: 66px;
     width: 100vw;
    
-    /* background-color: #005c00; */
-   
+    
+   /* background-color: #005c00; */
     /* background-image: url("https://wallpapercave.com/wp/u7maPeE.jpg"); */
     background-image: url('https://i.imgur.com/W9LidFq.jpg');
     background-position: center;
      /* background: rgba(0, 77, 0, 0.1); */
     /* box-shadow: 0 0 2px 2px #005c00; */
-    opacity: 0.5;
+    opacity: 0.8;
 
     
     text-align: center;
