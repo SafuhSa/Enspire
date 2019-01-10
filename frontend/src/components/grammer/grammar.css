@@ -87,6 +87,11 @@
   visibility: hidden;
 }
 
+.super-hidden {
+  visibility: hidden;
+  position: absolute;
+}
+
 .render-errors{
   font-size: 14px;
   color: rgb(204, 0, 0);

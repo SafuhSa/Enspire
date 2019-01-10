@@ -177,6 +177,7 @@ class GrammarForm extends React.Component {
 
     return <div className="grammar-page">
         <br />
+  
         <div className="grammar-box">
           <div className="flex">
             <button className="change-button" onClick={this.changeTopic.bind(this)}>
@@ -201,8 +202,7 @@ class GrammarForm extends React.Component {
               Title:
               <input className="title-input" placeholder="Enter Title of Recording" type="text" onChange={this.updateName} value={this.state.name} />
             </div>
-          <div className="text">
-          </div>
+          
             <button className="record-button" onClick={this.handleSpeech}>
               {buttonText}
             </button>
@@ -229,6 +229,9 @@ class GrammarForm extends React.Component {
             <div className='flex'>{this.renderLastCorrect()}</div>
           </div>
         </div>
+
+      <div className="text super-hidden"></div> 
+      
       </div>;
   }
 }
