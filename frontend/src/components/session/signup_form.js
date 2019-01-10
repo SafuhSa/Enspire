@@ -60,6 +60,7 @@ class SignupForm extends React.Component {
     let demo = { email: "email@email.com", password: 'password' }
     return (
       <div className="login-form-container">
+      
           <form className="login-form-box" onSubmit={this.handleSubmit}>
             <h1 className='login-text'>Your first steps start now!</h1>
           <div className="login-form">

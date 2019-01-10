@@ -55,10 +55,11 @@ class LoginForm extends React.Component {
 
   // Render the session errors if there are any
   renderErrors() {
+    // debugger
     return (
       <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+        {Object.keys(this.props.errors).map((error, i) => (
+          <li key={`error-${i}`}>{this.props.errors[error]}</li>
         ))}
       </ul>
     );
@@ -66,33 +67,22 @@ class LoginForm extends React.Component {
 
 
   render() {
-    return (
-      <div className='login-form-container'>
-        <form className='login-form-box' onSubmit={this.handleSubmit}>
-          <h1 className='login-text'>Welcome back</h1>
-          <br/><br/>
+    return <div className="login-form-container">
+        <form className="login-form-box" onSubmit={this.handleSubmit}>
+          <h1 className="login-text">Welcome back</h1>
+          <br />
+          <br />
           <div>
-            <input type="text"
-              className="login-text-box"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
+            <input type="text" className="login-text-box" value={this.state.email} onChange={this.update("email")} placeholder="Email" />
             <br />
-            <input type="password"
-              className="login-text-box"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
-            <br /><br /><br/>
-            <input 
-              className="login-submit"
-              type="submit" 
-              value="Submit" />
+            <input type="password" className="login-text-box" value={this.state.password} onChange={this.update("password")} placeholder="Password" />
+            <br />
+            <br />
+            <br />
+            <input className="login-submit" type="submit" value="Submit" />
             {this.renderErrors()}
           </div>
-          <br/>
+          <br />
           {/* <input 
             className='login-submit'
             id='demo'
@@ -100,8 +90,7 @@ class LoginForm extends React.Component {
             value='Demo Log in' 
             onClick={this.handleDemo.bind(this)}  /> */}
         </form>
-      </div>
-    );
+      </div>;
   }
 }
 
