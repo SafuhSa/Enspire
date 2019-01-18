@@ -2,7 +2,7 @@
 ## MERN Flex Project
 ### Jayalakshmi Dammalapati, Safuh Alsarayji, Erica Edelman
 
-
+[Live link](https://enspire-app.herokuapp.com/#/)
 ## `Background and Overview`  
   For non-native speakers, prepping for interviews or speaking with someone in English is difficult and some people will feel shy.
 
