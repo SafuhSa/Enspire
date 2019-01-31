@@ -101,3 +101,10 @@
     padding: 3px 0px;
 
 }
+text{
+    transform: rotate(-28deg);
+    text-anchor: end !important;
+}
+.history-list{
+    margin-top: 12px;
+}

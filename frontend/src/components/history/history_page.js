@@ -37,8 +37,7 @@ class HistoryPage extends React.Component {
             data.push(obj)
             }
         }
-        console.log(data)
-        // debugger
+    
         return <div className='bar-chart' style={{ width: "50%" }}>
             <BarChart className="bar-group" width={440} height={300} margin={margin} data={data} onBarClick={(element)=>alert(`On '${element.text}' you have ${element.value} errors`)}
             // {(element, id) => this.displaymistakes(element.text)}
